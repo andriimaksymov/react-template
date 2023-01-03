@@ -1,0 +1,112 @@
+\:root
+  --default-button-color: hsl(60, 45%, 90%)
+
+.root
+  position: relative
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  -webkit-tap-highlight-color: transparent
+  outline: 0
+  cursor: pointer
+  user-select: none
+  appearance: none
+  text-decoration: none
+  font: inherit
+  min-width: 64px
+  padding: .5rem 1rem
+  border-radius: var(--button-border-radius, 4px)
+  background-color: transparent
+  border: 1px solid transparent
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms
+
+.small
+  font-size: .875rem
+  padding: .375rem 1rem
+
+.medium
+  padding: .625rem 1.25rem
+
+.large
+  font-size: 1.125rem
+  padding: .75rem 1.5rem
+
+.text
+  border: 0
+
+  &.default
+    color: var(--color-body-main)
+
+  &.primary
+    color: var(--color-primary-main)
+
+    &:hover
+      color: var(--color-primary-light)
+
+    &:focus
+      color: var(--color-primary-dark)
+
+  &.secondary
+    color: var(--color-secondary-main)
+
+    &:hover
+      color: var(--color-secondary-light)
+
+    &:focus
+      color: var(--color-secondary-dark)
+
+.contained
+  &.default
+    color: var(--color-body-main)
+    border-color: var(--default-button-color)
+    background-color: var(--default-button-color)
+
+  &.primary
+    color: var(--default-button-color)
+    border-color: var(--color-primary-main)
+    background-color: var(--color-primary-main)
+
+  &.secondary
+    color: var(--default-button-color)
+    border-color: var(--color-secondary-main)
+    background-color: var(--color-secondary-main)
+
+.outlined
+  background-color: transparent
+
+  &.default
+    color: var(--color-body-main)
+    border-color: var(--default-button-color)
+
+  &.primary
+    color: var(--color-primary-main)
+    border-color: var(--color-primary-main)
+
+  &.secondary
+    color: var(--color-secondary-main)
+    border-color: var(--color-secondary-main)
+
+.fullWidth
+  width: 100%
+
+.inner
+  flex: 1
+  text-align: center
+
+.icon
+  display: inline-flex
+  width: 1.375em
+  height: 1.375em
+
+  svg
+    fill: currentColor
+
+.iconStart
+  margin-right: .625rem
+
+.iconEnd
+  margin-left: .625rem
+
+.disabled
+  opacity: .8
+  cursor: not-allowed
