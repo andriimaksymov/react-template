@@ -1,7 +1,9 @@
 import { ComponentPropsWithRef, ElementType, forwardRef, ReactNode } from 'react';
 import clsx from 'clsx';
 
-import classes from './Button.module.sass';
+import { PolymorphicRef } from '../../../types/utils';
+
+import styles from './Button.module.sass';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
@@ -22,49 +24,47 @@ export type ButtonProps<T extends ElementType> = {
   variant?: ButtonVariant;
 }
 
-export declare type PolymorphicRef<T extends ElementType> = ComponentPropsWithRef<T>['ref'];
-
-const BaseButton = <T extends ElementType = 'button'>({
-                                                        component,
-                                                        startIcon: StartIcon,
-                                                        endIcon: EndIcon,
-                                                        size = 'medium',
-                                                        color = 'default',
-                                                        variant = 'text',
-                                                        className,
-                                                        fullWidth,
-                                                        disabled,
-                                                        children,
-                                                        ...props
-                                                      }: ButtonProps<T> & Omit<ComponentPropsWithRef<T>, keyof ButtonProps<T>>,
-                                                      ref: PolymorphicRef<T>) => {
+const ButtonBase = <T extends ElementType = 'button'>({
+                                                               component,
+                                                               startIcon: StartIcon,
+                                                               endIcon: EndIcon,
+                                                               size = 'medium',
+                                                               color = 'default',
+                                                               variant = 'text',
+                                                               className,
+                                                               fullWidth,
+                                                               disabled,
+                                                               children,
+                                                               ...props
+                                                             }: ButtonProps<T> & Omit<ComponentPropsWithRef<T>, keyof ButtonProps<T>>,
+                                                             ref: PolymorphicRef<T>) => {
   const Component = component || 'button';
 
-  const classNames = clsx(classes.root, className, {
-    [classes[color]]: color,
-    [classes.disabled]: disabled,
-    [classes.fullWidth]: fullWidth,
-    [classes[size]]: size,
-    [classes[variant]]: variant,
+  const classNames = clsx(styles.root, className, {
+    [styles[color]]: color,
+    [styles.disabled]: disabled,
+    [styles.fullWidth]: fullWidth,
+    [styles[size]]: size,
+    [styles[variant]]: variant,
   });
 
   return (
     <Component ref={ref} className={classNames} disabled={disabled} {...props}>
       {StartIcon && (
-        <span className={clsx(classes.icon, classes.iconStart)}>
-          <StartIcon />
+        <span className={clsx(styles.iconWrap, styles.iconStart)}>
+          <StartIcon className={styles.icon} />
         </span>
       )}
-      <span className={classes.inner}>{children}</span>
+      <span className={styles.inner}>{children}</span>
       {EndIcon && (
-        <span className={clsx(classes.icon, classes.iconEnd)}>
-          <EndIcon />
+        <span className={clsx(styles.iconWrap, styles.iconEnd)}>
+          <EndIcon className={styles.icon} />
         </span>
       )}
     </Component>
   );
 };
 
-const Button = forwardRef(BaseButton) as typeof BaseButton;
+const Button = forwardRef(ButtonBase) as typeof ButtonBase;
 
-export default Button;
+export default Button as typeof ButtonBase;

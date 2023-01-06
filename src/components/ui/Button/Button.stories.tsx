@@ -5,11 +5,8 @@ import { ReactComponent as PlusIcon } from '../../../assets/icons/plus.svg';
 import Button, {ButtonSize, ButtonColor, ButtonVariant} from './Button';
 
 export default {
-  title: 'Example/Button',
+  title: 'Components/UI/Button',
   component: Button,
-  argTypes: {
-    fullWidth: { type: 'boolean' },
-  },
 } as Meta<typeof Button>;
 
 const Template: Story<typeof Button> = (args) => <Button {...args} />;
@@ -56,5 +53,5 @@ export const SizeLarge = createStory('contained', 'large', 'default');
 export const StartIcon = createStory('contained', 'medium', 'default', false, PlusIcon);
 export const EndIcon = createStory('contained', 'medium', 'default', false, undefined, PlusIcon);
 
-export const Disabled = createStory('contained', 'medium', 'default', true);
+export const Disabled = createStory('contained', 'medium', 'primary', true);
 export const FullWidth = createStory('contained', 'medium', 'primary', false, undefined, undefined, true);
