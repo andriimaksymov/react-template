@@ -8,6 +8,7 @@ import Button from './components/ui/Button';
 
 import { ReactComponent as PlusIcon } from './assets/icons/plus.svg';
 import IconButton from './components/ui/IconButton';
+import Stack from './components/ui/Stack';
 
 function App() {
   return (
@@ -35,10 +36,12 @@ function Layout() {
         <Button color="primary" variant="contained" size="medium" endIcon={PlusIcon}>Medium Button</Button>
         <Button color="primary" variant="contained" size="large" endIcon={PlusIcon}>Large Button</Button>
         <Button>Button 10</Button>
-        <IconButton icon={PlusIcon} />
-        <IconButton size="small" icon={PlusIcon} />
-        <IconButton size="large" icon={PlusIcon} />
-        <IconButton round size="large" icon={PlusIcon} />
+        <Stack spacing={4} align="center">
+          <IconButton icon={PlusIcon} />
+          <IconButton size="small" icon={PlusIcon} />
+          <IconButton size="large" icon={PlusIcon} />
+          <IconButton round size="large" icon={PlusIcon} />
+        </Stack>
       </div>
       <nav>
         <ul>
