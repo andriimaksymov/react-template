@@ -9,6 +9,7 @@ import Button from './components/ui/Button';
 import { ReactComponent as PlusIcon } from './assets/icons/plus.svg';
 import IconButton from './components/ui/IconButton';
 import Stack from './components/ui/Stack';
+import Input from './components/ui/Input';
 
 function App() {
   return (
@@ -23,12 +24,10 @@ function App() {
 function Layout() {
   return (
     <div>
-      <div style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        gap: 10
-      }}>
+      <Stack>
+        <Input placeholder="123" endAdornment={<PlusIcon width={20} />} startAdornment={<PlusIcon width={20} />} />
+      </Stack>
+      <Stack align="center" spacing={2} wrap>
         <Button variant="contained" color="primary" component="span">Button 1</Button>
         <Button component={Link} to="/about">Button 2</Button>
         <Button component="a" target="_blank" href="https://google.com">Button 3</Button>
@@ -42,7 +41,7 @@ function Layout() {
           <IconButton size="large" icon={PlusIcon} />
           <IconButton round size="large" icon={PlusIcon} />
         </Stack>
-      </div>
+      </Stack>
       <nav>
         <ul>
           <li>

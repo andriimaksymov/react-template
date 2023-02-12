@@ -1,0 +1,49 @@
+.root
+  display: flex
+  align-items: center
+
+  position: relative
+
+  min-width: 0
+  width: 100%
+  outline: none
+  border: 1px solid transparent
+  border-radius: 8px
+
+.control
+  -webkit-tap-highlight-color: transparent
+
+  display: block
+  flex-grow: 1
+
+  font-size: 1rem
+  font-family: inherit
+  font-weight: 400
+  line-height: 1.5
+  letter-spacing: inherit
+
+  padding: 8px 18px
+  color: #1A2027
+  background: 0 0
+  border: none
+  border-radius: inherit
+  outline: 0
+
+  &::placeholder
+    opacity: .5
+    color: inherit
+
+.adornment
+  display: flex
+
+  margin: 8px
+
+.contained
+  background-color: #f0f0f0
+
+.outlined
+  background-color: transparent
+  border-color: #f0f0f0
+
+.disabled
+  opacity: 0.4
