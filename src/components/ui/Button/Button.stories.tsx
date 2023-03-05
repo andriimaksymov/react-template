@@ -2,7 +2,7 @@ import React, { ElementType } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { ReactComponent as PlusIcon } from '../../../assets/icons/plus.svg';
 
-import Button, {ButtonSize, ButtonColor, ButtonVariant} from './Button';
+import Button, { ButtonSize, ButtonColor, ButtonVariant } from './Button';
 
 export default {
   title: 'Components/UI/Button',
