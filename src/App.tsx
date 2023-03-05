@@ -6,6 +6,7 @@ import './global.sass';
 import Home from './pages/Home';
 import Stack from './components/ui/Stack';
 import Switch from './components/ui/Switch';
+import Checkbox from './components/ui/Checkbox';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function Layout() {
         <Switch size="large" />
         <Switch size="medium" />
         <Switch size="small" />
+        <Checkbox label="123" labelPlacement="start" />
       </Stack>
       <Outlet />
     </div>
