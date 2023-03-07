@@ -8,6 +8,9 @@ import Stack from './components/ui/Stack';
 import Switch from './components/ui/Switch';
 import Checkbox from './components/ui/Checkbox';
 
+import {ReactComponent as BookmarkIcon} from './assets/icons/bookmark.svg';
+import {ReactComponent as BookmarkFilledIcon} from './assets/icons/bookmark-filled.svg';
+
 function App() {
   return (
     <Routes>
@@ -25,7 +28,7 @@ function Layout() {
         <Switch size="large" />
         <Switch size="medium" />
         <Switch size="small" />
-        <Checkbox label="123" labelPlacement="start" />
+        <Checkbox icon={BookmarkIcon} checkedIcon={BookmarkFilledIcon} label="123" labelPlacement="start" />
       </Stack>
       <Outlet />
     </div>

@@ -1,7 +1,14 @@
 import clsx from 'clsx';
-import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, ReactNode, useState } from 'react';
+import {
+  ChangeEvent,
+  ComponentPropsWithoutRef,
+  ElementType,
+  forwardRef,
+  ReactNode,
+  useState
+} from 'react';
 import { ReactComponent as DefaultIcon } from './unchecked-icon.svg';
-import { ReactComponent as CheckedIcon } from './checked-icon.svg';
+import { ReactComponent as DefaultCheckedIcon } from './checked-icon.svg';
 import styles from './Checkbox.module.sass';
 
 export type CheckboxLabelPlacement = 'start' | 'end';
@@ -9,17 +16,17 @@ export type CheckboxLabelPlacement = 'start' | 'end';
 export type CheckboxProps = {
   label?: ReactNode;
   className?: string;
-  icon?: ReactNode;
-  checkedIcon?: ReactNode;
+  icon?: ElementType;
+  checkedIcon?: ElementType;
   labelPlacement?: CheckboxLabelPlacement;
 } & ComponentPropsWithoutRef<'input'>
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
                                                                 className,
                                                                 label,
-                                                                icon,
-                                                                checkedIcon,
-                                                                labelPlacement,
+                                                                icon: Icon,
+                                                                checkedIcon: CheckedIcon,
+                                                                labelPlacement = 'end',
                                                                 ...props
                                                               }, ref) => {
   const [checked, setChecked] = useState<boolean>(props.defaultChecked || props.checked || false);
@@ -37,9 +44,9 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
     <label className={classNames}>
       <input type="checkbox" ref={ref} {...props} className={styles.input} onChange={handleChange} />
       {checked ? (
-        checkedIcon ?? <CheckedIcon className={styles.icon} />
+        CheckedIcon ? <CheckedIcon className={styles.icon} /> : <DefaultCheckedIcon className={styles.icon} />
       ) : (
-        icon ?? <DefaultIcon className={styles.icon} />
+        Icon ? <Icon className={styles.icon} /> : <DefaultIcon className={styles.icon} />
       )}
       <span className={styles.label}>{label}</span>
     </label>
