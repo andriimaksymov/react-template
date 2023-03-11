@@ -25,19 +25,19 @@ export type ButtonProps<T extends ElementType> = {
 }
 
 const ButtonBase = <T extends ElementType = 'button'>({
-                                                               component,
-                                                               startIcon: StartIcon,
-                                                               endIcon: EndIcon,
-                                                               size = 'medium',
-                                                               color = 'default',
-                                                               variant = 'text',
-                                                               className,
-                                                               fullWidth,
-                                                               disabled,
-                                                               children,
-                                                               ...props
-                                                             }: ButtonProps<T> & Omit<ComponentPropsWithRef<T>, keyof ButtonProps<T>>,
-                                                             ref: PolymorphicRef<T>) => {
+                                                        component,
+                                                        startIcon: StartIcon,
+                                                        endIcon: EndIcon,
+                                                        size = 'medium',
+                                                        color = 'default',
+                                                        variant = 'contained',
+                                                        className,
+                                                        fullWidth,
+                                                        disabled,
+                                                        children,
+                                                        ...props
+                                                      }: ButtonProps<T> & Omit<ComponentPropsWithRef<T>, keyof ButtonProps<T>>,
+                                                      ref: PolymorphicRef<T>) => {
   const Component = component || 'button';
 
   const classNames = clsx(styles.root, className, {
@@ -67,4 +67,4 @@ const ButtonBase = <T extends ElementType = 'button'>({
 
 const Button = forwardRef(ButtonBase) as typeof ButtonBase;
 
-export default Button as typeof ButtonBase;
+export default Button;

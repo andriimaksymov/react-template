@@ -34,10 +34,9 @@ const IconButtonBase = <T extends ElementType = 'button'>({
                                                           ref: PolymorphicRef<T>) => {
   const Component = component || 'button';
 
-  const classNames = clsx(styles.root, className, {
+  const classNames = clsx(styles.root, className, color && [styles[color]], {
     [styles.disabled]: disabled,
     [styles.round]: round,
-    [styles[color!]]: color,
   });
 
   const iconClassNames = clsx(styles.icon, iconClassName, styles[size]);

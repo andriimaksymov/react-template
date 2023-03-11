@@ -27,10 +27,7 @@ const TypographyBase = <T extends ElementType>({
                                                }: TypographyProps<T> & Omit<ComponentPropsWithRef<T>, keyof TypographyProps<T>>, ref: PolymorphicRef<T>) => {
   const Component = component || 'span';
 
-  const classNames = clsx(styles.root, className, {
-    [styles[variant!]]: variant,
-    [styles[weight!]]: weight,
-  });
+  const classNames = clsx(styles.root, className, variant && [styles[variant]], weight && [styles[weight]]);
 
   return (
     <Component ref={ref} className={classNames} {...props}>

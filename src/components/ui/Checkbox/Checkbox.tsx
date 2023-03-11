@@ -30,7 +30,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
                                                                 ...props
                                                               }, ref) => {
   const [checked, setChecked] = useState<boolean>(props.defaultChecked || props.checked || false);
-  const classNames = clsx(styles.root, className, {
+  const classNames = clsx(styles.root, className, props.disabled && [styles.disabled], {
     [styles.placementStart]: labelPlacement === 'start',
     [styles.placementEnd]: labelPlacement === 'end',
   });

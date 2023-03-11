@@ -24,6 +24,9 @@ export default {
     fullWidth: {
       control: 'boolean',
       defaultValue: false,
+    },
+    disabled: {
+      control: 'boolean',
     }
   }
 } as Meta<typeof Button>;
