@@ -1,4 +1,4 @@
-import { ElementType, forwardRef, ReactNode } from 'react';
+import { UIEvent, ElementType, forwardRef, ReactNode } from 'react';
 import clsx from 'clsx';
 
 import IconButton from '../IconButton';
@@ -11,8 +11,8 @@ export type ChipColor = 'primary' | 'secondary';
 export type ChipVariant = 'outlined' | 'contained';
 
 export type ChipProps = {
-  isActive?: boolean;
   round?: boolean;
+  disabled?: boolean;
   className?: string;
   children?: ReactNode;
   variant?: ChipVariant;
@@ -26,7 +26,7 @@ const Chip = forwardRef<HTMLDivElement, ChipProps>(({
                                                       className,
                                                       color,
                                                       deleteIcon,
-                                                      isActive,
+                                                      disabled,
                                                       round,
                                                       variant = 'contained',
                                                       children,
@@ -35,10 +35,15 @@ const Chip = forwardRef<HTMLDivElement, ChipProps>(({
                                                       ...props
                                                     }, ref) => {
     const classNames = clsx(styles.root, className, color && [styles[color]], round && [styles.round], {
+      [styles.disabled]: disabled,
       [styles[variant]]: variant,
-      [styles.active]: isActive,
       [styles.clickable]: onClick
     });
+
+    const handleDelete = (e: UIEvent<HTMLSpanElement>) => {
+      e.stopPropagation();
+      onDelete?.();
+    }
 
     return (
       <div ref={ref} className={classNames} {...(onClick && { onClick })} {...props}>
@@ -46,7 +51,12 @@ const Chip = forwardRef<HTMLDivElement, ChipProps>(({
           {children}
         </div>
         {onDelete && (
-          <IconButton component="span" icon={deleteIcon ?? CloseIcon} onClick={onDelete} className={styles.button} />
+          <IconButton
+            component="span"
+            className={styles.button}
+            icon={deleteIcon ?? CloseIcon}
+            onClick={handleDelete}
+          />
         )}
       </div>
     );
