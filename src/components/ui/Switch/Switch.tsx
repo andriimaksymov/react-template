@@ -10,7 +10,10 @@ export type SwitchProps = {
   size?: SwitchSize,
 }
 
-const Switch = forwardRef<HTMLDivElement, SwitchProps>(({ className, size, ...props }, ref) => {
+const Switch = forwardRef<HTMLDivElement, SwitchProps>((
+  { className, size, ...props },
+  ref
+) => {
   const classNames = clsx(styles.root, className, size && [styles[size]]);
 
   return (
