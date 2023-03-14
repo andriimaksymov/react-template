@@ -30,7 +30,7 @@
   outline: 0
 
   &::placeholder
-    opacity: .5
+    opacity: .8
     color: inherit
 
 .adornment
@@ -41,9 +41,22 @@
 .contained
   background-color: #f0f0f0
 
+  &.hasError
+    border-color: var(--color-error-main, red)
+
 .outlined
   background-color: transparent
   border-color: #f0f0f0
+
+  &.hasError
+    border-color: var(--color-error-main, red)
+
+.underline
+  border-bottom: 1px solid #f0f0f0
+  border-radius: 0
+
+  &.hasError
+    border-bottom-color: var(--color-error-main, red)
 
 .disabled
   opacity: 0.4

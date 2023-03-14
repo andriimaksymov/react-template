@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import Switch, { SwitchSize } from './Switch';
+import Switch, { SwitchLabelPlacement, SwitchSize } from './Switch';
+import { ReactNode } from 'react';
 
 export default {
   title: 'Components/UI/Switch',
@@ -10,11 +11,15 @@ export default {
 const Template: ComponentStory<typeof Switch> = (args) => <Switch {...args} />;
 
 function createStory(
-  size: SwitchSize
+  size: SwitchSize,
+  label?: ReactNode,
+  labelPlacement?: SwitchLabelPlacement
 ) {
   const story = Template.bind({});
   story.args = {
-    size
+    size,
+    label,
+    labelPlacement
   };
   return story;
 }
@@ -22,3 +27,7 @@ function createStory(
 export const Small = createStory('small');
 export const Medium = createStory('medium');
 export const Large = createStory('large');
+export const LabelPlacementStart = createStory('medium', 'Start', 'start');
+export const LabelPlacementTop = createStory('medium', 'Top', 'top');
+export const LabelPlacementBottom = createStory('medium', 'Bottom', 'bottom');
+export const LabelPlacementEnd = createStory('medium', 'End', 'end');

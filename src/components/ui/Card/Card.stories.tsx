@@ -1,5 +1,5 @@
-import Card, { CardProps } from './Card';
-import { ComponentMeta } from '@storybook/react';
+import Card from './Card';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Stack from '../Stack';
 import Typography from '../Typography';
 
@@ -19,7 +19,9 @@ export default {
   }
 } as ComponentMeta<typeof Card>;
 
-export const BasicCard = (args: CardProps) => {
+const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
+
+export const BasicCard = (args: typeof Card) => {
   return (
     <Stack direction="column" spacing={3}>
       <Typography component="h1" variant="h4" weight="bold">Basic card</Typography>
@@ -46,4 +48,47 @@ export const BasicCard = (args: CardProps) => {
     </Stack>
   );
 };
+export const Elevations = (args: typeof Card) => {
+  return (
+    <Stack direction="column" spacing={3}>
+      <Typography component="h1" variant="h4" weight="bold">
+        Card Elevations
+      </Typography>
+      <div
+        style={{
+          padding: '2.5rem',
+          borderRadius: 10,
+          backgroundColor: 'rgb(231, 235, 240)'
+        }}
+      >
+        <Stack spacing={4}>
+          <Card {...args} elevation={1}>
+            Elevation 1
+          </Card>
+          <Card {...args} elevation={2}>
+            Elevation 2
+          </Card>
+          <Card {...args} elevation={3}>
+            Elevation 3
+          </Card>
+          <Card {...args} elevation={4}>
+            Elevation 4
+          </Card>
+        </Stack>
+      </div>
+    </Stack>
+  );
+};
 
+export const Bordered = Template.bind({});
+Bordered.args = {
+  children: 'Card with border',
+  hasBorder: true,
+}
+
+export const BorderedColor = Template.bind({});
+BorderedColor.args = {
+  children: 'Card with custom border color',
+  hasBorder: true,
+  borderColor: 'blue'
+}

@@ -3,12 +3,14 @@ import clsx from 'clsx';
 
 import styles from './Card.module.sass';
 
+export type CardElevation = 0 | 1 | 2 | 3 | 4;
+
 export type CardProps = {
   hasBorder?: boolean;
   borderColor?: string;
   className?: string;
   children?: ReactNode;
-  elevation?: 0 | 1 | 2 | 3 | 4;
+  elevation?: CardElevation;
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>((

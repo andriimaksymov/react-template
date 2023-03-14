@@ -1,0 +1,33 @@
+.root
+  position: relative
+  display: inline-flex
+
+.content
+  display: flex
+  align-items: center
+  position: absolute
+  top: 0
+  right: 0
+  font-size: 0.75rem
+  line-height: 1
+  color: rgb(255, 255, 255)
+  background-color: rgb(46, 125, 50)
+  border-radius: 10px
+  transform: scale(1) translate(50%, -50%)
+  transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms
+  transform-origin: 100% 0
+  z-index: 1
+
+.standard
+  min-width: 20px
+  height: 20px
+  padding: 0 6px
+
+.dot
+  min-width: 8px
+  height: 8px
+  border-radius: 4px
+
+.invisible
+  .content
+    transform: scale(0) translate(50%, -50%)

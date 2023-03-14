@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, forwardRef, ReactNode } from 'react';
 
 import styles from './Input.module.sass';
 
-export type InputVariant = 'contained' | 'outlined';
+export type InputVariant = 'contained' | 'outlined' | 'underline';
 
 export type InputProps = {
   className?: string;

@@ -10,11 +10,13 @@ export default {
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} placeholder="Input" />;
 
 function createStory(
-  variant?: InputVariant
+  variant?: InputVariant,
+  hasError?: boolean,
 ) {
   const story = Template.bind({});
   story.args = {
-    variant
+    variant,
+    hasError,
   };
   return story;
 }
@@ -22,3 +24,5 @@ function createStory(
 export const InputDefault = createStory();
 export const InputOutlined = createStory('outlined');
 export const InputContained = createStory('contained');
+export const InputUnderline = createStory('underline');
+export const InputWithError = createStory('contained', true);
