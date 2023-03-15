@@ -3,10 +3,16 @@ import clsx from 'clsx';
 
 import styles from './Badge.module.sass';
 
+export interface BadgeOrigin {
+  vertical: 'top' | 'bottom';
+  horizontal: 'left' | 'right';
+}
+
 export type BadgeProps = {
   badgeContent?: ReactNode;
   className?: string;
   children?: ReactNode;
+  color?: 'primary' | 'secondary' | 'default' | 'error' | 'info' | 'success' | 'warning';
   variant?: 'dot' | 'standard';
   invisible?: boolean;
 }
@@ -15,6 +21,7 @@ const Badge = (
     badgeContent,
     className,
     children,
+    color = 'default',
     invisible,
     variant = 'standard',
     ...props
@@ -25,7 +32,7 @@ const Badge = (
   return (
     <div className={classNames} {...props}>
       {children}
-      <span className={clsx(styles.content, styles[variant])}>
+      <span className={clsx(styles.content, styles[`${color}Color`], styles[variant])}>
         {variant !== 'dot' && badgeContent}
       </span>
     </div>

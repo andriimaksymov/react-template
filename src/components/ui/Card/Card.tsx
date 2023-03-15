@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode } from 'react';
+import { forwardRef, HTMLAttributes, ReactNode } from 'react';
 import clsx from 'clsx';
 
 import styles from './Card.module.sass';
@@ -11,7 +11,7 @@ export type CardProps = {
   className?: string;
   children?: ReactNode;
   elevation?: CardElevation;
-}
+} & HTMLAttributes<HTMLDivElement>
 
 const Card = forwardRef<HTMLDivElement, CardProps>((
   {
@@ -20,15 +20,21 @@ const Card = forwardRef<HTMLDivElement, CardProps>((
     className,
     children,
     elevation,
+    ...props
   }, ref) => {
   const classNames = clsx(styles.root, className, elevation && [styles[`elevation${elevation}`]], {
     [styles.withBorder]: hasBorder,
   });
 
   return (
-    <div ref={ref} className={classNames} style={{
+    <div
+      ref={ref}
+      className={classNames}
+      style={{
       ...(borderColor && { borderColor })
-    }}>
+      }}
+      {...props}
+    >
       {children}
     </div>
   );

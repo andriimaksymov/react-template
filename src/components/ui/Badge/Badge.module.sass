@@ -5,18 +5,44 @@
 .content
   display: flex
   align-items: center
+  justify-content: center
   position: absolute
   top: 0
   right: 0
   font-size: 0.75rem
   line-height: 1
-  color: rgb(255, 255, 255)
-  background-color: rgb(46, 125, 50)
   border-radius: 10px
   transform: scale(1) translate(50%, -50%)
   transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms
   transform-origin: 100% 0
   z-index: 1
+
+.defaultColor
+  background-color: #f0f0f0
+
+.primaryColor
+  color: #ffffff
+  background-color: var(--color-primary-main)
+
+.secondaryColor
+  color: #ffffff
+  background-color: var(--color-secondary-main)
+
+.infoColor
+  color: #ffffff
+  background-color: var(--color-info-main, LightSkyBlue)
+
+.successColor
+  color: #ffffff
+  background-color: var(--color-success-main, green)
+
+.errorColor
+  color: #ffffff
+  background-color: var(--color-error-main, crimson)
+
+.warningColor
+  color: #ffffff
+  background-color: var(--color-warning-main, orange)
 
 .standard
   min-width: 20px
