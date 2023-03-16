@@ -35,8 +35,6 @@ const Switch = forwardRef<HTMLDivElement, SwitchProps>((
     className
   );
 
-  console.log(checked);
-
   return (
     <div className={classNames} ref={ref} {...props}>
       <label className={clsx(styles.label, label && styles[labelPlacementClassName])}>

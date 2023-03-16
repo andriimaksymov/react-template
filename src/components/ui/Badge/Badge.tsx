@@ -9,15 +9,49 @@ export interface BadgeOrigin {
 }
 
 export type BadgeProps = {
+  /**
+   * The anchor of the badge.
+   * @default {
+   *   vertical: 'top',
+   *   horizontal: 'right',
+   * }
+   */
+  anchorOrigin?: BadgeOrigin;
+  /**
+   * The content rendered within the badge.
+   */
   badgeContent?: ReactNode;
+  /**
+   * Override or extend the styles applied to the component
+   */
   className?: string;
+  /**
+   * The badge will be added relative to this node.
+   */
   children?: ReactNode;
-  color?: 'primary' | 'secondary' | 'default' | 'error' | 'info' | 'success' | 'warning';
-  variant?: 'dot' | 'standard';
+  /**
+   * The color of component
+   * @default 'default'
+   */
+  color?: 'default' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
+  /**
+   * The state of badge visibility
+   * If 'true' the badge is invisible
+   * @default false
+   */
   invisible?: boolean;
+  /**
+   * The variant to use
+   * @default 'standard'
+   */
+  variant?: 'dot' | 'standard';
 }
 const Badge = (
   {
+    anchorOrigin = {
+      vertical: 'top',
+      horizontal: 'right'
+    },
     badgeContent,
     className,
     children,
@@ -26,16 +60,22 @@ const Badge = (
     variant = 'standard',
     ...props
   }: BadgeProps) => {
+
   const classNames = clsx(styles.root, className, {
     [styles.invisible]: invisible
   });
+
+  const classNamesContent = clsx(styles.content, styles[`${color}Color`], styles[variant], {
+    [styles.anchorOriginTopRight]: anchorOrigin?.horizontal === 'right' && anchorOrigin.vertical === 'top',
+  });
+
   return (
-    <div className={classNames} {...props}>
+    <span className={classNames} {...props}>
       {children}
-      <span className={clsx(styles.content, styles[`${color}Color`], styles[variant])}>
+      <span className={classNamesContent}>
         {variant !== 'dot' && badgeContent}
       </span>
-    </div>
+    </span>
   );
 };
 
