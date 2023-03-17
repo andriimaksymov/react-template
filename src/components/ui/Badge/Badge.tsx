@@ -66,7 +66,10 @@ const Badge = (
   });
 
   const classNamesContent = clsx(styles.content, styles[`${color}Color`], styles[variant], {
-    [styles.anchorOriginTopRight]: anchorOrigin?.horizontal === 'right' && anchorOrigin.vertical === 'top',
+    [styles.anchorOriginTopLeft]: anchorOrigin.horizontal === 'left' && anchorOrigin.vertical === 'top',
+    [styles.anchorOriginTopRight]: anchorOrigin.horizontal === 'right' && anchorOrigin.vertical === 'top',
+    [styles.anchorOriginBottomLeft]: anchorOrigin.horizontal === 'left' && anchorOrigin.vertical === 'bottom',
+    [styles.anchorOriginBottomRight]: anchorOrigin.horizontal === 'right' && anchorOrigin.vertical === 'bottom',
   });
 
   return (

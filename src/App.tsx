@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route, Outlet, Link } from 'react-router-dom';
 
 import './global.sass';
@@ -7,7 +7,8 @@ import Home from './pages/Home';
 import Stack from './components/ui/Stack';
 import Button from './components/ui/Button';
 import Switch from './components/ui/Switch';
-import Badge from './components/ui/Badge';
+import Badge, { BadgeOrigin } from './components/ui/Badge';
+import Radio from './components/ui/Radio';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
 }
 
 function Layout() {
+  const [vertical, setVertical] = useState<BadgeOrigin['vertical']>('top');
+
   return (
     <div>
       <Stack align="center" spacing={2} wrap>
@@ -27,6 +30,20 @@ function Layout() {
           <Button component={Link} to="/home" variant="contained">123</Button>
         </Badge>
         <Switch labelPlacement="end" label="123" />
+        <Radio
+          label="Top"
+          name="vertical-1"
+          value="top"
+          checked={vertical === 'top'}
+          onChange={(e) => setVertical(e.target.value as typeof vertical)}
+        />
+        <Radio
+          label="Bottom"
+          name="vertical-1"
+          value="bottom"
+          checked={vertical === 'bottom'}
+          onChange={(e) => setVertical(e.target.value as typeof vertical)}
+        />
       </Stack>
       <Outlet />
     </div>
