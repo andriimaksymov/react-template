@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, HTMLAttributes, ReactNode } from 'react';
 import clsx from 'clsx';
 
 import styles from './Stack.module.sass';
@@ -21,20 +21,21 @@ export type StackProps = {
   direction?: StackDirection;
   align?: StackAlign;
   justify?: StackJustify;
-}
+} & HTMLAttributes<HTMLDivElement>
 
-const Stack: FC<StackProps> = ({
-                                 align,
-                                 justify,
-                                 direction = 'row',
-                                 spacing,
-                                 grow,
-                                 shrink,
-                                 wrap,
-                                 classNames,
-                                 children,
-                                 ...props
-                               }) => {
+const Stack: FC<StackProps> = (
+  {
+    align,
+    justify,
+    direction = 'row',
+    spacing,
+    grow,
+    shrink,
+    wrap,
+    classNames,
+    children,
+    ...props
+  }) => {
   const defaultStyle = {
     ...(typeof spacing === 'string' && {
       gridGap: spacing

@@ -12,32 +12,68 @@ export type ButtonVariant = 'contained' | 'outlined' | 'text';
 export type ButtonColor = 'default' | 'primary' | 'secondary';
 
 export type ButtonProps<T extends ElementType> = {
-  fullWidth?: boolean;
-  disabled?: boolean;
-  className?: string;
+  /**
+   * The content of the component
+   */
   children?: ReactNode;
-  endIcon?: ElementType;
-  startIcon?: ElementType;
+  /**
+   * Override or extend the style applied to the component
+   */
+  className?: string;
+  /**
+   * The color of the component
+   * @default 'default'
+   */
   color?: ButtonColor;
+  /**
+   * The component that will be used
+   */
   component?: T;
+  /**
+   * If 'true' the component is disabled
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * The icon that will be placed after content
+   */
+  endIcon?: ElementType;
+  /**
+   * The component will be stretched by all content
+   * @default false
+   */
+  fullWidth?: boolean;
+  /**
+   * The size of the component
+   * @default 'medium'
+   */
   size?: ButtonSize;
+  /**
+   * The icon that will be placed before content
+   */
+  startIcon?: ElementType;
+  /**
+   * The variant of the component
+   * @default 'contained'
+   */
   variant?: ButtonVariant;
 }
 
-const ButtonBase = <T extends ElementType = 'button'>({
-                                                        component,
-                                                        startIcon: StartIcon,
-                                                        endIcon: EndIcon,
-                                                        size = 'medium',
-                                                        color = 'default',
-                                                        variant = 'contained',
-                                                        className,
-                                                        fullWidth,
-                                                        disabled,
-                                                        children,
-                                                        ...props
-                                                      }: ButtonProps<T> & Omit<ComponentPropsWithRef<T>, keyof ButtonProps<T>>,
-                                                      ref: PolymorphicRef<T>) => {
+const ButtonBase = <T extends ElementType = 'button'>(
+  {
+    children,
+    className,
+    component,
+    color = 'default',
+    disabled,
+    endIcon: EndIcon,
+    size = 'medium',
+    startIcon: StartIcon,
+    variant = 'contained',
+    fullWidth,
+    ...props
+  }: ButtonProps<T> & Omit<ComponentPropsWithRef<T>, keyof ButtonProps<T>>,
+  ref: PolymorphicRef<T>) => {
   const Component = component || 'button';
 
   const classNames = clsx(styles.root, className, {

@@ -1,10 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Radio from './Radio';
-import { ReactComponent as BookmarkIcon } from '../../../assets/icons/bookmark.svg';
-import { ReactComponent as BookmarkFilledIcon } from '../../../assets/icons/bookmark-filled.svg';
 
 export default {
-  title: 'Components/UI/Checkbox',
+  title: 'Components/UI/Radio',
   component: Radio,
   argTypes: {
     label: {
@@ -27,12 +25,6 @@ export const DefaultWithLabel = Template.bind({});
 DefaultWithLabel.args = {
   defaultChecked: false,
   label: 'Default checkbox with label'
-};
-
-export const WithCustomIcon = Template.bind({});
-WithCustomIcon.args = {
-  icon: BookmarkIcon,
-  checkedIcon: BookmarkFilledIcon,
 };
 
 export const LabelPlacementStart = Template.bind({});
