@@ -6,15 +6,15 @@ import { ReactComponent as DefaultCheckedIcon } from './checked-icon.svg';
 
 import styles from './Radio.module.sass';
 
-export type CheckboxProps = {
-  /**
-   * A text or an element to be used in an enclosing label element.
-   */
-  label?: ReactNode;
+export type RadioProps = {
   /**
    * Override or extend the style applied to the component
    */
   className?: string;
+  /**
+   * A text or an element to be used in an enclosing label element.
+   */
+  label?: ReactNode;
   /**
    * The position of the label.
    * @default 'end'
@@ -22,7 +22,7 @@ export type CheckboxProps = {
   labelPlacement?: 'start' | 'end'; // todo extend
 } & ComponentPropsWithoutRef<'input'>
 
-const Radio = forwardRef<HTMLInputElement, CheckboxProps>((
+const Radio = forwardRef<HTMLInputElement, RadioProps>((
   {
     className,
     label,

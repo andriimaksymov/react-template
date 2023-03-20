@@ -48,8 +48,7 @@ export default {
 export const Basic = (args: BadgeProps) => (
   <Stack justify="center" spacing={2} style={{ padding: '1rem' }}>
     <Badge badgeContent={5} {...args}>
-      <SvgIcon icon={MailIcon} />
-      <MailIcon width={24} height={24} />
+      <SvgIcon color="muted" icon={MailIcon} />
     </Badge>
   </Stack>
 );
@@ -57,25 +56,25 @@ export const Basic = (args: BadgeProps) => (
 export const Color = (args: BadgeProps) => (
   <Stack justify="center" spacing={4}>
     <Badge badgeContent={5} color="default" {...args}>
-      <MailIcon width={24} height={24} />
+      <SvgIcon color="muted" icon={MailIcon} />
     </Badge>
     <Badge badgeContent={5} color="primary" {...args}>
-      <MailIcon width={24} height={24} />
+      <SvgIcon color="muted" icon={MailIcon} />
     </Badge>
     <Badge badgeContent={5} color="secondary" {...args}>
-      <MailIcon width={24} height={24} />
+      <SvgIcon color="muted" icon={MailIcon} />
     </Badge>
     <Badge badgeContent={5} color="info" {...args}>
-      <MailIcon width={24} height={24} />
+      <SvgIcon color="muted" icon={MailIcon} />
     </Badge>
     <Badge badgeContent={5} color="success" {...args}>
-      <MailIcon width={24} height={24} />
+      <SvgIcon color="muted" icon={MailIcon} />
     </Badge>
     <Badge badgeContent={5} color="warning" {...args}>
-      <MailIcon width={24} height={24} />
+      <SvgIcon color="muted" icon={MailIcon} />
     </Badge>
     <Badge badgeContent={5} color="error" {...args}>
-      <MailIcon width={24} height={24} />
+      <SvgIcon color="muted" icon={MailIcon} />
     </Badge>
   </Stack>
 );
@@ -94,10 +93,10 @@ export const Visibility = (args: BadgeProps) => {
         />
         <Stack justify="center" spacing={4}>
           <Badge invisible={!isVisible} variant="dot" color="primary" {...args}>
-            <MailIcon width={24} height={24} />
+            <SvgIcon color="muted" icon={MailIcon} />
           </Badge>
           <Badge badgeContent={5} invisible={!isVisible} color="primary" {...args}>
-            <MailIcon width={24} height={24} />
+            <SvgIcon color="muted" icon={MailIcon} />
           </Badge>
         </Stack>
       </Stack>
@@ -165,7 +164,7 @@ export const Alignment = (args: BadgeProps) => {
           }}
           {...args}
         >
-          <MailIcon width={24} height={24} />
+          <SvgIcon color="muted" icon={MailIcon} />
         </Badge>
         <Badge
           color="primary"
@@ -176,7 +175,7 @@ export const Alignment = (args: BadgeProps) => {
           badgeContent={5}
           {...args}
         >
-          <MailIcon width={24} height={24} />
+          <SvgIcon color="muted" icon={MailIcon} />
         </Badge>
         <Badge
           color="primary"
@@ -187,7 +186,7 @@ export const Alignment = (args: BadgeProps) => {
           badgeContent={999}
           {...args}
         >
-          <MailIcon width={24} height={24} />
+          <SvgIcon color="muted" icon={MailIcon} />
         </Badge>
       </Stack>
     </Stack>

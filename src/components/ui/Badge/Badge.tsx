@@ -22,7 +22,7 @@ export type BadgeProps = {
    */
   badgeContent?: ReactNode;
   /**
-   * Override or extend the styles applied to the component
+   * Override or extend the styles applied to the component.
    */
   className?: string;
   /**
@@ -30,18 +30,18 @@ export type BadgeProps = {
    */
   children?: ReactNode;
   /**
-   * The color of component
+   * The color of component.
    * @default 'default'
    */
   color?: 'default' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
   /**
-   * The state of badge visibility
-   * If 'true' the badge is invisible
+   * The state of badge visibility.
+   * If 'true' the badge is invisible.
    * @default false
    */
   invisible?: boolean;
   /**
-   * The variant to use
+   * The variant to use.
    * @default 'standard'
    */
   variant?: 'dot' | 'standard';

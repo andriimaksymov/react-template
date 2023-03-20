@@ -9,6 +9,7 @@ import Button from './components/ui/Button';
 import Switch from './components/ui/Switch';
 import Badge, { BadgeOrigin } from './components/ui/Badge';
 import Radio from './components/ui/Radio';
+import Checkbox from './components/ui/Checkbox';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function Layout() {
           <Button component={Link} to="/home" variant="contained">123</Button>
         </Badge>
         <Switch labelPlacement="end" label="123" />
+        <Checkbox label={123} className="234" />
         <Radio
           label="Top"
           name="vertical-1"

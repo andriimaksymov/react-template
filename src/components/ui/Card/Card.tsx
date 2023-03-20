@@ -11,11 +11,11 @@ export type CardProps = {
    */
   borderColor?: string;
   /**
-   * Override or extend the styles applied to the component
+   * Override or extend the styles applied to the component.
    */
   className?: string;
   /**
-   * The content render inside the card
+   * The content render inside the card.
    */
   children?: ReactNode;
   /**
@@ -25,7 +25,7 @@ export type CardProps = {
    */
   elevation?: CardElevation;
   /**
-   * If 'true' the card has 1px border
+   * If 'true' the card has 1px border.
    * @default false
    */
   hasBorder?: boolean;

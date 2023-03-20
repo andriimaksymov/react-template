@@ -20,18 +20,19 @@ export type IconButtonProps<T extends ElementType> = {
   color?: IconButtonColor;
 }
 
-const IconButtonBase = <T extends ElementType = 'button'>({
-                                                            component,
-                                                            icon: Icon,
-                                                            round,
-                                                            color,
-                                                            className,
-                                                            iconClassName,
-                                                            disabled,
-                                                            size = 'medium',
-                                                            ...props
-                                                          }: IconButtonProps<T> & Omit<ComponentPropsWithRef<T>, keyof IconButtonProps<T>>,
-                                                          ref: PolymorphicRef<T>) => {
+const IconButtonBase = <T extends ElementType = 'button'>(
+  {
+    component,
+    icon: Icon,
+    round,
+    color,
+    className,
+    iconClassName,
+    disabled,
+    size = 'medium',
+    ...props
+  }: IconButtonProps<T> & Omit<ComponentPropsWithRef<T>, keyof IconButtonProps<T>>,
+  ref: PolymorphicRef<T>) => {
   const Component = component || 'button';
 
   const classNames = clsx(styles.root, className, color && [styles[color]], {

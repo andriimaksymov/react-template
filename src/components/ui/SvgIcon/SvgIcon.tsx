@@ -12,7 +12,7 @@ export type SvgIconProps = {
    * The color of the component
    * @default 'inherit'
    */
-  color?: 'inherit' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
+  color?: 'inherit' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning' | 'muted';
   /**
    * The fontSize applied to the icon. Default to 24px, but can be configure to inherit font size
    * @default 'medium'

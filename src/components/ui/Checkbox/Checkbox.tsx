@@ -1,37 +1,48 @@
 import clsx from 'clsx';
-import {
-  ChangeEvent,
-  ComponentPropsWithoutRef,
-  ElementType,
-  forwardRef,
-  ReactNode,
-  useState
-} from 'react';
+import { ChangeEvent, ComponentPropsWithoutRef, ElementType, forwardRef, ReactNode, useState } from 'react';
 import { ReactComponent as DefaultIcon } from './unchecked-icon.svg';
 import { ReactComponent as DefaultCheckedIcon } from './checked-icon.svg';
 import styles from './Checkbox.module.sass';
 
-export type CheckboxLabelPlacement = 'start' | 'end';
-
 export type CheckboxProps = {
-  label?: ReactNode;
+  /**
+   * Override or extend the style applied to the component
+   */
   className?: string;
-  icon?: ElementType;
+  /**
+   * Icon to be used if checkbox is checked
+   */
   checkedIcon?: ElementType;
-  labelPlacement?: CheckboxLabelPlacement;
+  /**
+   * A text or an element to be used in an enclosing label element.
+   */
+  label?: ReactNode;
+  /**
+   * The position of the label
+   * @default 'end'
+   */
+  labelPlacement?: 'top' | 'start' | 'bottom' | 'end';
+  /**
+   * Icon to be used if checkbox is unchecked
+   */
+  icon?: ElementType;
 } & ComponentPropsWithoutRef<'input'>
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
-                                                                className,
-                                                                label,
-                                                                icon: Icon,
-                                                                checkedIcon: CheckedIcon,
-                                                                labelPlacement = 'end',
-                                                                ...props
-                                                              }, ref) => {
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((
+  {
+    className,
+    label,
+    icon: Icon,
+    checkedIcon: CheckedIcon,
+    labelPlacement = 'end',
+    ...props
+  }, ref) => {
+
   const [checked, setChecked] = useState<boolean>(props.defaultChecked || props.checked || false);
   const classNames = clsx(styles.root, className, props.disabled && [styles.disabled], {
     [styles.placementStart]: labelPlacement === 'start',
+    [styles.placementTop]: labelPlacement === 'top',
+    [styles.placementBottom]: labelPlacement === 'bottom',
     [styles.placementEnd]: labelPlacement === 'end',
   });
 
@@ -42,11 +53,25 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
 
   return (
     <label className={classNames}>
-      <input type="checkbox" ref={ref} {...props} className={styles.input} onChange={handleChange} />
+      <input
+        ref={ref}
+        type="checkbox"
+        className={styles.input}
+        onChange={handleChange}
+        {...props}
+      />
       {checked ? (
-        CheckedIcon ? <CheckedIcon className={styles.icon} /> : <DefaultCheckedIcon className={styles.icon} />
+        CheckedIcon ? (
+          <CheckedIcon className={styles.icon} />
+        ) : (
+          <DefaultCheckedIcon className={styles.icon} />
+        )
       ) : (
-        Icon ? <Icon className={styles.icon} /> : <DefaultIcon className={styles.icon} />
+        Icon ? (
+          <Icon className={styles.icon} />
+        ) : (
+          <DefaultIcon className={styles.icon} />
+        )
       )}
       <span className={styles.label}>{label}</span>
     </label>

@@ -13,47 +13,47 @@ export type ButtonColor = 'default' | 'primary' | 'secondary';
 
 export type ButtonProps<T extends ElementType> = {
   /**
-   * The content of the component
+   * The content of the component.
    */
   children?: ReactNode;
   /**
-   * Override or extend the style applied to the component
+   * Override or extend the style applied to the component.
    */
   className?: string;
   /**
-   * The color of the component
+   * The color of the component.
    * @default 'default'
    */
   color?: ButtonColor;
   /**
-   * The component that will be used
+   * The component that will be used.
    */
   component?: T;
   /**
-   * If 'true' the component is disabled
+   * If 'true' the component is disabled.
    * @default false
    */
   disabled?: boolean;
   /**
-   * The icon that will be placed after content
+   * The icon that will be placed after content.
    */
   endIcon?: ElementType;
   /**
-   * The component will be stretched by all content
+   * The component will be stretched by all content.
    * @default false
    */
   fullWidth?: boolean;
   /**
-   * The size of the component
+   * The size of the component.
    * @default 'medium'
    */
   size?: ButtonSize;
   /**
-   * The icon that will be placed before content
+   * The icon that will be placed before content.
    */
   startIcon?: ElementType;
   /**
-   * The variant of the component
+   * The variant of the component.
    * @default 'contained'
    */
   variant?: ButtonVariant;

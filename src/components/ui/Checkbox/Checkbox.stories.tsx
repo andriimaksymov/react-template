@@ -1,7 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Checkbox from './Checkbox';
+import Checkbox, { CheckboxProps } from './Checkbox';
 import { ReactComponent as BookmarkIcon } from '../../../assets/icons/bookmark.svg';
 import { ReactComponent as BookmarkFilledIcon } from '../../../assets/icons/bookmark-filled.svg';
+import Stack from '../Stack';
 
 export default {
   title: 'Components/UI/Checkbox',
@@ -11,22 +12,15 @@ export default {
       control: {
         type: 'text'
       },
-      defaultValue: ''
     }
   }
 } as ComponentMeta<typeof Checkbox>;
 
 const Template: ComponentStory<typeof Checkbox> = (args) => <Checkbox {...args} />;
 
-export const DefaultWithoutLabel = Template.bind({});
-DefaultWithoutLabel.args = {
+export const Default = Template.bind({});
+Default.args = {
   defaultChecked: true
-};
-
-export const DefaultWithLabel = Template.bind({});
-DefaultWithLabel.args = {
-  defaultChecked: false,
-  label: 'Default checkbox with label'
 };
 
 export const WithCustomIcon = Template.bind({});
@@ -35,21 +29,18 @@ WithCustomIcon.args = {
   checkedIcon: BookmarkFilledIcon,
 };
 
-export const LabelPlacementStart = Template.bind({});
-LabelPlacementStart.args = {
-  label: 'Checkbox label',
-  labelPlacement: 'start'
-};
-
-export const LabelPlacementEnd = Template.bind({});
-LabelPlacementEnd.args = {
-  label: 'Checkbox label',
-  labelPlacement: 'end',
-};
+export const Placements = (args: CheckboxProps) => (
+  <Stack spacing={4} justify="center">
+    <Checkbox label="Top" labelPlacement="top" {...args} />
+    <Checkbox label="Start" labelPlacement="start" {...args} />
+    <Checkbox label="Bottom" labelPlacement="bottom" {...args} />
+    <Checkbox label="End" labelPlacement="end" {...args} />
+  </Stack>
+)
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  label: 'Disabled Checkbox',
+  label: 'Disabled',
   disabled: true,
   defaultChecked: true,
 };
