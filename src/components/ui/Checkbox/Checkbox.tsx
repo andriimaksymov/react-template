@@ -1,16 +1,18 @@
 import clsx from 'clsx';
 import { ChangeEvent, ComponentPropsWithoutRef, ElementType, forwardRef, ReactNode, useState } from 'react';
-import { ReactComponent as DefaultIcon } from './unchecked-icon.svg';
-import { ReactComponent as DefaultCheckedIcon } from './checked-icon.svg';
+
+import { ReactComponent as DefaultIcon } from './assets/unchecked-icon.svg';
+import { ReactComponent as DefaultCheckedIcon } from './assets/checked-icon.svg';
+
 import styles from './Checkbox.module.sass';
 
 export type CheckboxProps = {
   /**
-   * Override or extend the style applied to the component
+   * Override or extend the style applied to the component.
    */
   className?: string;
   /**
-   * Icon to be used if checkbox is checked
+   * Icon to be used if checkbox is checked.
    */
   checkedIcon?: ElementType;
   /**
@@ -18,12 +20,12 @@ export type CheckboxProps = {
    */
   label?: ReactNode;
   /**
-   * The position of the label
+   * The position of the label.
    * @default 'end'
    */
   labelPlacement?: 'top' | 'start' | 'bottom' | 'end';
   /**
-   * Icon to be used if checkbox is unchecked
+   * Icon to be used if checkbox is unchecked.
    */
   icon?: ElementType;
 } & ComponentPropsWithoutRef<'input'>
@@ -73,7 +75,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((
           <DefaultIcon className={styles.icon} />
         )
       )}
-      <span className={styles.label}>{label}</span>
+      {label && <span className={styles.label}>{label}</span>}
     </label>
   );
 });

@@ -1,7 +1,8 @@
-import { ElementType, forwardRef, ReactNode, UIEvent } from 'react';
 import clsx from 'clsx';
+import { ElementType, forwardRef, ReactNode, UIEvent } from 'react';
 
 import IconButton from '../IconButton';
+
 import { ReactComponent as CloseIcon } from './close.svg';
 
 import styles from './Chip.module.sass';
@@ -50,19 +51,19 @@ export type ChipProps = {
   variant?: 'outlined' | 'contained';
 }
 
-const Chip = forwardRef<HTMLDivElement, ChipProps>((
-    {
-      className,
-      color = 'default',
-      deleteIcon,
-      disabled,
-      round,
-      variant = 'contained',
-      children,
-      onDelete,
-      onClick,
-      ...props
-    }, ref) => {
+const Chip = forwardRef<HTMLDivElement, ChipProps>(
+  ({
+     className,
+     color = 'default',
+     deleteIcon,
+     disabled,
+     round,
+     variant = 'contained',
+     children,
+     onDelete,
+     onClick,
+     ...props
+   }, ref) => {
 
     const classNames = clsx(styles.root, className, color && [styles[color]], round && [styles.round], {
       [styles.disabled]: disabled,

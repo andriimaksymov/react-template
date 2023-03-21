@@ -10,9 +10,7 @@ export type InputProps = {
   hasError?: boolean;
   loading?: boolean;
   variant?: InputVariant;
-
   controlClassName?: string;
-
   endAdornment?: ReactNode;
   startAdornment?: ReactNode;
 } & ComponentPropsWithoutRef<'input'>;

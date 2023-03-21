@@ -26,7 +26,7 @@ export type ButtonProps<T extends ElementType> = {
    */
   color?: ButtonColor;
   /**
-   * The component that will be used.
+   * The component to use.
    */
   component?: T;
   /**

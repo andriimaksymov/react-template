@@ -20,9 +20,9 @@ export default {
 
 const Template: ComponentStory<typeof Chip> = (args) => <Chip {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  children: 'Default Chip'
+export const Basic = Template.bind({});
+Basic.args = {
+  children: 'Basic Chip'
 };
 
 export const Variants = (args: typeof Chip) => (

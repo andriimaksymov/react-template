@@ -17,14 +17,16 @@ export type TypographyProps<T extends ElementType> = {
   weight?: TypographyWeight,
 }
 
-const TypographyBase = <T extends ElementType>({
-                                                 component,
-                                                 children,
-                                                 className,
-                                                 variant = 'body1',
-                                                 weight,
-                                                 ...props
-                                               }: TypographyProps<T> & Omit<ComponentPropsWithRef<T>, keyof TypographyProps<T>>, ref: PolymorphicRef<T>) => {
+const TypographyBase = <T extends ElementType>(
+  {
+    component,
+    children,
+    className,
+    variant = 'body1',
+    weight,
+    ...props
+  }: TypographyProps<T> & Omit<ComponentPropsWithRef<T>, keyof TypographyProps<T>>, ref: PolymorphicRef<T>) => {
+
   const Component = component || 'span';
 
   const classNames = clsx(styles.root, className, variant && [styles[variant]], weight && [styles[weight]]);

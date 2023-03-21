@@ -4,3 +4,48 @@
   border-width: 0 0 thin
   border-style: solid
   border-color: rgba(0, 0, 0, 0.08)
+
+.vertical
+  margin: 0
+  flex-shrink: 0
+  border-width: 0
+  border-style: solid
+  border-color: rgba(0, 0, 0, 0.12)
+  height: auto
+  border-right-width: thin
+  align-self: stretch
+
+.withChildren
+  display: flex
+  white-space: nowrap
+  border: 0
+
+  &.vertical
+    flex-direction: column
+
+  .inner
+    margin-right: 0.5rem
+    margin-left: 0.5rem
+
+.withChildren::before,
+.withChildren::after
+  content: ""
+  position: relative
+  top: 50%
+  width: 100%
+  border-top: thin solid rgba(0, 0, 0, 0.12)
+  transform: translateY(50%)
+
+.withChildrenVertical::before,
+.withChildrenVertical::after
+  height: 100%
+  top: 0
+  left: 50%
+  border-top: 0
+  border-left: thin solid rgba(0, 0, 0, 0.12)
+  transform: translateX(0%)
+
+.withChildrenVertical
+  .inner
+    margin-top: 0.5rem
+    margin-bottom: 0.5rem

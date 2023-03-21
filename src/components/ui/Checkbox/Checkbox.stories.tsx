@@ -1,7 +1,11 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ComponentMeta } from '@storybook/react';
 import Checkbox, { CheckboxProps } from './Checkbox';
+
 import { ReactComponent as BookmarkIcon } from '../../../assets/icons/bookmark.svg';
 import { ReactComponent as BookmarkFilledIcon } from '../../../assets/icons/bookmark-filled.svg';
+import { ReactComponent as HeartIcon } from '../../../assets/icons/heart.svg';
+import { ReactComponent as HeartFilledIcon } from '../../../assets/icons/heart-filled.svg';
+
 import Stack from '../Stack';
 
 export default {
@@ -16,20 +20,25 @@ export default {
   }
 } as ComponentMeta<typeof Checkbox>;
 
-const Template: ComponentStory<typeof Checkbox> = (args) => <Checkbox {...args} />;
+export const Basic = (args: CheckboxProps) => (
+  <Stack justify="center" spacing={1}>
+    <Checkbox {...args} defaultChecked />
+    <Checkbox {...args} />
+    <Checkbox {...args} disabled />
+    <Checkbox {...args} disabled checked />
+  </Stack>
+)
 
-export const Default = Template.bind({});
-Default.args = {
-  defaultChecked: true
-};
+export const Label = (args: CheckboxProps) => (
+  <Stack justify="center">
+    <Stack spacing={1} direction="column">
+      <Checkbox defaultChecked label="Label" {...args} />
+      <Checkbox label="Disabled" disabled {...args} />
+    </Stack>
+  </Stack>
+)
 
-export const WithCustomIcon = Template.bind({});
-WithCustomIcon.args = {
-  icon: BookmarkIcon,
-  checkedIcon: BookmarkFilledIcon,
-};
-
-export const Placements = (args: CheckboxProps) => (
+export const LabelPlacement = (args: CheckboxProps) => (
   <Stack spacing={4} justify="center">
     <Checkbox label="Top" labelPlacement="top" {...args} />
     <Checkbox label="Start" labelPlacement="start" {...args} />
@@ -38,9 +47,17 @@ export const Placements = (args: CheckboxProps) => (
   </Stack>
 )
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  label: 'Disabled',
-  disabled: true,
-  defaultChecked: true,
-};
+export const Icons = (args: CheckboxProps) => (
+  <Stack spacing={2} justify="center">
+    <Checkbox
+      icon={BookmarkIcon}
+      checkedIcon={BookmarkFilledIcon}
+      {...args}
+    />
+    <Checkbox
+      icon={HeartIcon}
+      checkedIcon={HeartFilledIcon}
+      {...args}
+    />
+  </Stack>
+)

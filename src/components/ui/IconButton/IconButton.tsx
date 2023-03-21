@@ -10,14 +10,42 @@ export type IconButtonSize = 'small' | 'medium' | 'large';
 export type IconButtonColor = 'default' | 'inherit' | 'primary' | 'secondary';
 
 export type IconButtonProps<T extends ElementType> = {
+  /**
+   * The component to use.
+   */
   component?: T,
-  icon: ElementType;
-  className?: string;
-  iconClassName?: string;
-  disabled?: boolean;
-  round?: boolean;
-  size?: IconButtonSize;
+  /**
+   * The color of the component.
+   * @default 'default'
+   */
   color?: IconButtonColor;
+  /**
+   * Override or extend the style applied to the component.
+   */
+  className?: string;
+  /**
+   * If 'true' the component is disabled.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * The content of the component.
+   */
+  icon: ElementType;
+  /**
+   * Override or extend the style applied to the component icon.
+   */
+  iconClassName?: string;
+  /**
+   * If 'true' button will be rounded.
+   * @default false
+   */
+  round?: boolean;
+  /**
+   * The size of the component.
+   * @default 'medium'
+   */
+  size?: IconButtonSize;
 }
 
 const IconButtonBase = <T extends ElementType = 'button'>(
