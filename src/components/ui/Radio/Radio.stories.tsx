@@ -16,8 +16,8 @@ export default {
 
 const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;
 
-export const DefaultWithoutLabel = Template.bind({});
-DefaultWithoutLabel.args = {
+export const Basic = Template.bind({});
+Basic.args = {
   defaultChecked: true
 };
 

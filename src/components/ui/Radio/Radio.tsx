@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { ComponentPropsWithoutRef, forwardRef, ReactNode } from 'react';
 
-import { ReactComponent as DefaultIcon } from './unchecked-icon.svg';
-import { ReactComponent as DefaultCheckedIcon } from './checked-icon.svg';
+import { ReactComponent as DefaultIcon } from './assets/unchecked-icon.svg';
+import { ReactComponent as DefaultCheckedIcon } from './assets/checked-icon.svg';
 
 import styles from './Radio.module.sass';
 
@@ -43,7 +43,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>((
         {...props}
       />
       <div className={styles.iconWrap}>
-        {props.checked && (
+        {(props.checked || props.defaultChecked) && (
           <DefaultCheckedIcon className={clsx(styles.icon, styles.checkedIcon)} />
         )}
         <DefaultIcon className={styles.icon} />

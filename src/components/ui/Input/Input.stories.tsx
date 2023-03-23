@@ -21,8 +21,8 @@ function createStory(
   return story;
 }
 
-export const InputDefault = createStory();
-export const InputOutlined = createStory('outlined');
-export const InputContained = createStory('contained');
-export const InputUnderline = createStory('underline');
-export const InputWithError = createStory('contained', true);
+export const Basic = createStory();
+export const Outlined = createStory('outlined');
+export const Contained = createStory('contained');
+export const Underline = createStory('underline');
+export const WithError = createStory('contained', true);
