@@ -5,7 +5,6 @@ import './global.sass';
 
 import Home from './pages/Home';
 import Stack from './components/ui/Stack';
-import Progress from './components/ui/Progress';
 
 function App() {
   return (
@@ -20,9 +19,7 @@ function App() {
 function Layout() {
   return (
     <div>
-      <Progress striped progress={60} />
-      <Stack align="center"  spacing={2} wrap>
-        <Progress striped progress={10} />
+      <Stack align="center"  spacing={4}>
       </Stack>
       <Outlet />
     </div>

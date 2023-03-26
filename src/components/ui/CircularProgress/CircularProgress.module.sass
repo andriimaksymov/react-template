@@ -1,0 +1,43 @@
+.root
+  display: inline-flex
+  flex-shrink: 0
+  position: relative
+
+.primary
+  color: var(--color-primary-main)
+
+.secondary
+  color: var(--color-secondary-main)
+
+.inherit
+  color: inherit
+
+.icon
+  fill: none
+  stroke: currentColor
+
+.indeterminate
+  animation: rotate 1.4s linear infinite
+
+.circleIndeterminate
+  animation: circleAnimation 1.4s ease-in-out infinite
+
+@keyframes rotate
+  0%
+    transform: rotate(0deg)
+
+  100%
+    transform: rotate(360deg)
+
+@keyframes circleAnimation
+  0%
+    stroke-dasharray: 1px,200px
+    stroke-dashoffset: 0
+
+  50%
+    stroke-dasharray: 100px,200px
+    stroke-dashoffset: -15px
+
+  100%
+    stroke-dasharray: 100px,200px
+    stroke-dashoffset: -125px

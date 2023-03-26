@@ -28,6 +28,9 @@ export default {
     disabled: {
       control: 'boolean',
     }
+  },
+  parameters: {
+
   }
 } as Meta<typeof Button>;
 
