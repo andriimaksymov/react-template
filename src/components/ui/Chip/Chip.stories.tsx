@@ -25,14 +25,14 @@ Basic.args = {
   children: 'Basic Chip'
 };
 
-export const Variants = (args: typeof Chip) => (
+export const Variant = (args: typeof Chip) => (
   <Stack spacing={2}>
     <Chip variant="contained" {...args}>Contained</Chip>
     <Chip variant="outlined" {...args}>Outlined</Chip>
   </Stack>
 );
 
-export const Colors = (args: typeof Chip) => (
+export const Color = (args: typeof Chip) => (
   <Stack spacing={2}>
     <Chip color="primary" variant="contained" {...args}>Primary</Chip>
     <Chip color="secondary" variant="contained" {...args}>Secondary</Chip>

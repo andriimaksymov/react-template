@@ -8,11 +8,41 @@ export type SwitchSize = 'small' | 'medium' | 'large';
 export type SwitchLabelPlacement = 'top' | 'start' | 'bottom' | 'end';
 
 export type SwitchProps = {
+  /**
+   * Override or extend the style applied to the component.
+   */
   className?: string;
-  size?: SwitchSize;
-  label?: ReactNode;
+  /**
+   * If 'true', the component is checked.
+   * @default false
+   */
   checked?: boolean;
+  /**
+   * If 'true', the component is disabled.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * A text or an element to be used in an enclosing label element.
+   */
+  label?: ReactNode;
+  /**
+   * The position of the label.
+   * @default 'end'
+   */
   labelPlacement?: SwitchLabelPlacement;
+  /**
+   * The size of the component.
+   * @default 'medium;
+   */
+  size?: 'small' | 'medium' | 'large';
+  /**
+   * Callback fired when the state is changed.
+   *
+   * function(event: React.ChangeEvent<HTMLInputElement>) => void
+   * event: The event source of the callback. You can pull out the new value by accessing event.target.value (string). You can pull out the new checked state by accessing event.target.checked (boolean).
+   * @param e
+   */
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -20,6 +50,7 @@ const Switch = forwardRef<HTMLDivElement, SwitchProps>((
   {
     checked,
     className,
+    disabled,
     label,
     labelPlacement = 'start',
     size,
@@ -32,6 +63,7 @@ const Switch = forwardRef<HTMLDivElement, SwitchProps>((
   const classNames = clsx(
     styles.root,
     size && styles[size],
+    disabled && styles.disabled,
     className
   );
 
@@ -43,6 +75,7 @@ const Switch = forwardRef<HTMLDivElement, SwitchProps>((
           className={styles.input}
           checked={checked}
           onChange={onChange}
+          disabled={disabled}
         />
         <span className={styles.switch} />
         <span className={styles.labelText}>{label}</span>

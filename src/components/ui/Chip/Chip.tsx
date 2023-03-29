@@ -3,7 +3,7 @@ import { ElementType, forwardRef, ReactNode, UIEvent } from 'react';
 
 import IconButton from '../IconButton';
 
-import { ReactComponent as CloseIcon } from './close.svg';
+import { ReactComponent as CloseIcon } from './assets/close.svg';
 
 import styles from './Chip.module.sass';
 

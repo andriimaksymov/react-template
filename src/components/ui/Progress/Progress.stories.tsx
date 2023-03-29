@@ -21,7 +21,7 @@ Label.args = {
   label: '60%'
 }
 
-export const Colors = (args: ProgressProps) => (
+export const Color = (args: ProgressProps) => (
   <Stack spacing={2} direction="column">
     <Progress {...args} progress={30} />
     <Progress {...args} progress={40} color="secondary" />

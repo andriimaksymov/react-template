@@ -22,6 +22,15 @@ export const Color = (args: CircularProgressProps) => (
   </Stack>
 )
 
+export const Determinate = (args: CircularProgressProps) => (
+  <Stack spacing={4} justify="center">
+    <CircularProgress size={100} value={25} variant="determinate" color="primary" {...args} />
+    <CircularProgress size={100} value={50} variant="determinate" color="primary" {...args} />
+    <CircularProgress size={100} value={75} variant="determinate" color="primary" {...args} />
+    <CircularProgress size={100} value={100} variant="determinate" color="primary" {...args} />
+  </Stack>
+)
+
 export const WithLabel = (args: CircularProgressProps) => (
   <Stack justify="center">
     <Stack style={{ position: 'relative', display: 'inline-flex' }}>

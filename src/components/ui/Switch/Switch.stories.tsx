@@ -1,33 +1,35 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ComponentMeta } from '@storybook/react';
 
-import Switch, { SwitchLabelPlacement, SwitchSize } from './Switch';
-import { ReactNode } from 'react';
+import Stack from '../Stack';
+import Switch, { SwitchProps } from './Switch';
 
 export default {
   title: 'Components/UI/Switch',
   component: Switch,
 } as ComponentMeta<typeof Switch>;
 
-const Template: ComponentStory<typeof Switch> = (args) => <Switch {...args} />;
+export const Basic = (args: SwitchProps) => (
+  <Stack spacing={2} justify="center">
+    <Switch checked {...args} />
+    <Switch {...args} />
+    <Switch checked disabled {...args} />
+    <Switch disabled {...args} />
+  </Stack>
+);
 
-function createStory(
-  size: SwitchSize,
-  label?: ReactNode,
-  labelPlacement?: SwitchLabelPlacement
-) {
-  const story = Template.bind({});
-  story.args = {
-    size,
-    label,
-    labelPlacement
-  };
-  return story;
-}
+export const Size = (args: SwitchProps) => (
+  <Stack spacing={2} justify="center">
+    <Switch size="small" {...args} />
+    <Switch size="medium" {...args} />
+    <Switch size="large" {...args} />
+  </Stack>
+);
 
-export const Small = createStory('small');
-export const Medium = createStory('medium');
-export const Large = createStory('large');
-export const LabelPlacementStart = createStory('medium', 'Start', 'start');
-export const LabelPlacementTop = createStory('medium', 'Top', 'top');
-export const LabelPlacementBottom = createStory('medium', 'Bottom', 'bottom');
-export const LabelPlacementEnd = createStory('medium', 'End', 'end');
+export const LabelPlacement = (args: SwitchProps) => (
+  <Stack spacing={4} justify="center">
+    <Switch label="Top" labelPlacement="top" {...args} />
+    <Switch label="Start" labelPlacement="start" {...args} />
+    <Switch label="Bottom" labelPlacement="bottom" {...args} />
+    <Switch label="End" labelPlacement="end" {...args} />
+  </Stack>
+)

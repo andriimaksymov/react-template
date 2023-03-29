@@ -59,49 +59,49 @@ function createStory(
   return story;
 }
 
-export const Variants = (args: typeof Button) => {
+export const Basic = (args: typeof Button) => {
   return (
-    <Stack spacing={3} align="center">
+    <Stack spacing={3} justify="center">
       <Button variant="text" color="primary" {...args}>
-        Text Button
+        Text
       </Button>
       <Button variant="contained" color="primary" {...args}>
-        Contained Button
+        Contained
       </Button>
       <Button variant="outlined" color="primary" {...args}>
-        Outlined Button
+        Outlined
       </Button>
     </Stack>
   )
 }
 
-export const Sizes = (args: typeof Button) => {
+export const Size = (args: typeof Button) => {
   return (
     <Stack spacing={3} align="center">
       <Button variant="contained" color="primary" size="small" {...args}>
-        Small Button
+        Small
       </Button>
       <Button variant="contained" color="primary" size="medium" {...args}>
-        Medium Button
+        Medium
       </Button>
       <Button variant="contained" color="primary" size="large" {...args}>
-        Large Button
+        Large
       </Button>
     </Stack>
   )
 }
 
-export const Colors = (args: typeof Button) => {
+export const Color = (args: typeof Button) => {
   return (
     <Stack spacing={3} align="center">
       <Button variant="contained" color="default" {...args}>
-        Default Button
+        Default
       </Button>
       <Button variant="contained" color="primary" {...args}>
-        Primary Button
+        Primary
       </Button>
       <Button variant="contained" color="secondary" {...args}>
-        Secondary Button
+        Secondary
       </Button>
     </Stack>
   )
