@@ -1,11 +1,12 @@
 import React from 'react';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route, Outlet, Link } from 'react-router-dom';
 
 import './global.sass';
 
 import Home from './pages/Home';
 import Stack from './components/ui/Stack';
 import Combobox from './components/ui/Combobox';
+import Button from './components/ui/Button';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function Layout() {
   return (
     <div>
       <Stack align="center"  spacing={4}>
+        <Button component={Link} to="/">
+          123
+        </Button>
         <Combobox
           items={[
             { key: 1, value: '10' },

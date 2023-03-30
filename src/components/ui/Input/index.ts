@@ -1,2 +1,2 @@
 export { default } from './Input';
-export type { InputVariant, InputProps } from './Input';
+export type { InputProps } from './Input';

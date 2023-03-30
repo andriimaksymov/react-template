@@ -38,6 +38,10 @@
         "code": 80
       }
     ],
+    "indent": [
+      "error",
+      2
+    ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "import/prefer-default-export": "off",

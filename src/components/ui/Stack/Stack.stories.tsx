@@ -23,7 +23,8 @@ const Template: ComponentStory<typeof Stack> = (args) => (
         height: 50,
         color: '#ffffff',
         backgroundColor: 'blue'
-      }}>
+      }}
+      >
         {n + 1}
       </div>
     ))}

@@ -49,7 +49,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((
       ref={ref}
       className={classNames}
       style={{
-      ...(borderColor && { borderColor })
+        ...(borderColor && { borderColor })
       }}
       {...props}
     >

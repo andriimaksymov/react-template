@@ -15,13 +15,13 @@ type TooltipProps = {
 };
 
 const Tooltip = ({
-                   width = 'auto',
-                   action = 'click',
-                   direction = 'bottom-end',
-                   delay,
-                   children,
-                   content
-                 }: TooltipProps) => {
+  width = 'auto',
+  action = 'click',
+  direction = 'bottom-end',
+  delay,
+  children,
+  content
+}: TooltipProps) => {
   const [active, setActive] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
 

@@ -1,9 +1,7 @@
 .root
   display: flex
   align-items: center
-
   position: relative
-
   min-width: 0
   width: 100%
   outline: none
@@ -12,16 +10,13 @@
 
 .control
   -webkit-tap-highlight-color: transparent
-
   display: block
   flex-grow: 1
-
   font-size: 1rem
   font-family: inherit
   font-weight: 400
   line-height: 1.5
   letter-spacing: inherit
-
   padding: 8px 18px
   color: #1A2027
   background: 0 0
@@ -30,13 +25,16 @@
   outline: 0
 
   &::placeholder
-    opacity: .8
-    color: inherit
+    color: rgba(0, 0, 0, 0.6)
 
 .adornment
   display: flex
-
   margin: 8px
+
+.hasError
+  .control
+    &::placeholder
+      color: var(--color-error-main, red)
 
 .contained
   background-color: #f0f0f0
@@ -59,4 +57,9 @@
     border-bottom-color: var(--color-error-main, red)
 
 .disabled
-  opacity: 0.4
+  .control
+    color: rgba(0, 0, 0, 0.38)
+    -webkit-text-fill-color: rgba(0, 0, 0, 0.38)
+
+    &::placeholder
+      color: rgba(0, 0, 0, 0.38)

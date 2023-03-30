@@ -5,12 +5,6 @@ import { PolymorphicRef } from '../../../types/utils';
 
 import styles from './Button.module.sass';
 
-export type ButtonSize = 'small' | 'medium' | 'large';
-
-export type ButtonVariant = 'contained' | 'outlined' | 'text';
-
-export type ButtonColor = 'default' | 'primary' | 'secondary';
-
 export type ButtonProps<T extends ElementType> = {
   /**
    * The content of the component.
@@ -24,7 +18,7 @@ export type ButtonProps<T extends ElementType> = {
    * The color of the component.
    * @default 'default'
    */
-  color?: ButtonColor;
+  color?: 'default' | 'primary' | 'secondary';
   /**
    * The component to use.
    */
@@ -47,7 +41,7 @@ export type ButtonProps<T extends ElementType> = {
    * The size of the component.
    * @default 'medium'
    */
-  size?: ButtonSize;
+  size?: 'small' | 'medium' | 'large';
   /**
    * The icon that will be placed before content.
    */
@@ -56,7 +50,7 @@ export type ButtonProps<T extends ElementType> = {
    * The variant of the component.
    * @default 'contained'
    */
-  variant?: ButtonVariant;
+  variant?: 'contained' | 'outlined' | 'text';
 }
 
 const ButtonBase = <T extends ElementType = 'button'>(
@@ -91,7 +85,7 @@ const ButtonBase = <T extends ElementType = 'button'>(
           <StartIcon className={styles.icon} />
         </span>
       )}
-      <span className={styles.inner}>{children}</span>
+      {children}
       {EndIcon && (
         <span className={clsx(styles.iconWrap, styles.iconEnd)}>
           <EndIcon className={styles.icon} />

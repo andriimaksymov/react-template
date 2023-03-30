@@ -1,8 +1,10 @@
-import React, { ElementType } from 'react';
-import { Meta, Story } from '@storybook/react';
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { BrowserRouter, Link } from 'react-router-dom';
+
 import { ReactComponent as PlusIcon } from '../../../assets/icons/plus.svg';
 
-import Button, { ButtonSize, ButtonColor, ButtonVariant } from './Button';
+import Button, { ButtonProps } from './Button';
 import Stack from '../Stack';
 
 export default {
@@ -11,15 +13,15 @@ export default {
   argTypes: {
     size: {
       control: 'select',
-      options: ['small', 'medium', 'large'] as ButtonSize[],
+      options: ['small', 'medium', 'large'] as ButtonProps<typeof Button>['size'][],
     },
     variant: {
       control: 'select',
-      options: ['text', 'outlined', 'contained'] as ButtonVariant[],
+      options: ['text', 'outlined', 'contained'] as ButtonProps<typeof Button>['variant'][],
     },
     color: {
       control: 'select',
-      options: ['default', 'primary', 'secondary'] as ButtonColor[],
+      options: ['default', 'primary', 'secondary'] as ButtonProps<typeof Button>['color'][],
     },
     fullWidth: {
       control: 'boolean',
@@ -33,31 +35,6 @@ export default {
 
   }
 } as Meta<typeof Button>;
-
-const Template: Story<typeof Button> = (args) => <Button {...args} />;
-
-function createStory(
-  variant: ButtonVariant,
-  size: ButtonSize,
-  color: ButtonColor,
-  disabled?: boolean,
-  startIcon?: ElementType,
-  endIcon?: ElementType,
-  fullWidth?: boolean,
-) {
-  const story = Template.bind({});
-  story.args = {
-    variant,
-    size,
-    color,
-    disabled,
-    startIcon,
-    endIcon,
-    fullWidth,
-    children: 'Button'
-  };
-  return story;
-}
 
 export const Basic = (args: typeof Button) => {
   return (
@@ -77,7 +54,7 @@ export const Basic = (args: typeof Button) => {
 
 export const Size = (args: typeof Button) => {
   return (
-    <Stack spacing={3} align="center">
+    <Stack spacing={3} align="center" justify="center">
       <Button variant="contained" color="primary" size="small" {...args}>
         Small
       </Button>
@@ -93,7 +70,7 @@ export const Size = (args: typeof Button) => {
 
 export const Color = (args: typeof Button) => {
   return (
-    <Stack spacing={3} align="center">
+    <Stack spacing={3} justify="center">
       <Button variant="contained" color="default" {...args}>
         Default
       </Button>
@@ -107,9 +84,27 @@ export const Color = (args: typeof Button) => {
   )
 }
 
+export const Links = (args: typeof Button) => {
+  return (
+    <BrowserRouter>
+      <Stack spacing={3} justify="center">
+        <Button component={Link} to="/" variant="text" color="default" {...args}>
+          Default Button
+        </Button>
+        <Button component={Link} to="/" variant="contained" color="primary" {...args}>
+          Primary Button
+        </Button>
+        <Button component={Link} to="/" variant="outlined" color="secondary" {...args}>
+          Secondary Button
+        </Button>
+      </Stack>
+    </BrowserRouter>
+  )
+}
+
 export const Disabled = (args: typeof Button) => {
   return (
-    <Stack spacing={3} align="center">
+    <Stack spacing={3} justify="center">
       <Button variant="text" color="default" disabled {...args}>
         Default Button
       </Button>
@@ -123,8 +118,51 @@ export const Disabled = (args: typeof Button) => {
   )
 }
 
-export const StartIcon = createStory('contained', 'medium', 'default', false, PlusIcon);
-export const EndIcon = createStory('contained', 'medium', 'default', false, undefined, PlusIcon);
 
-// export const Disabled = createStory('contained', 'medium', 'primary', true);
-export const FullWidth = createStory('contained', 'medium', 'primary', false, undefined, undefined, true);
+export const IconStart = (args: typeof Button) => {
+  return (
+    <Stack spacing={3} justify="center">
+      <Button startIcon={PlusIcon} variant="text" color="primary" {...args}>
+        Text
+      </Button>
+      <Button startIcon={PlusIcon} variant="contained" color="primary" {...args}>
+        Contained
+      </Button>
+      <Button startIcon={PlusIcon} variant="outlined" color="primary" {...args}>
+        Outlined
+      </Button>
+    </Stack>
+  )
+}
+
+export const IconEnd = (args: typeof Button) => {
+  return (
+    <Stack spacing={3} justify="center">
+      <Button endIcon={PlusIcon} variant="text" color="primary" {...args}>
+        Text
+      </Button>
+      <Button endIcon={PlusIcon} variant="contained" color="primary" {...args}>
+        Contained
+      </Button>
+      <Button endIcon={PlusIcon} variant="outlined" color="primary" {...args}>
+        Outlined
+      </Button>
+    </Stack>
+  )
+}
+
+export const FullWidth = (args: typeof Button) => {
+  return (
+    <Stack spacing={2} justify="center" direction="column">
+      <Button fullWidth variant="text" color="primary" {...args}>
+        Text
+      </Button>
+      <Button fullWidth variant="contained" color="primary" {...args}>
+        Contained
+      </Button>
+      <Button fullWidth variant="outlined" color="primary" {...args}>
+        Outlined
+      </Button>
+    </Stack>
+  )
+}

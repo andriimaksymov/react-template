@@ -18,10 +18,19 @@ export const Basic = (args: SwitchProps) => (
 );
 
 export const Size = (args: SwitchProps) => (
-  <Stack spacing={2} justify="center">
-    <Switch size="small" {...args} />
-    <Switch size="medium" {...args} />
-    <Switch size="large" {...args} />
+  <Stack spacing={4} justify="center">
+    <Stack spacing={1}>
+      <Switch size="small" {...args} />
+      <Switch size="small" checked {...args} />
+    </Stack>
+    <Stack spacing={1}>
+      <Switch size="medium" {...args} />
+      <Switch size="medium" checked {...args} />
+    </Stack>
+    <Stack spacing={1}>
+      <Switch size="large" {...args} />
+      <Switch size="large" checked {...args} />
+    </Stack>
   </Stack>
 );
 

@@ -21,5 +21,12 @@ module.exports = {
   'rules': {
     'react/react-in-jsx-scope': 'off',
     'react/display-name': 'off',
+    'react/jsx-indent': [1, 2],
+    'react/jsx-indent-props': [1, 2],
+    'react/jsx-closing-bracket-location': [1, {
+      selfClosing: 'tag-aligned',
+      nonEmpty: 'tag-aligned'
+    }],
+    'indent': ['error', 2],
   }
-};
+}

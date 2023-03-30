@@ -69,7 +69,9 @@ const CircularProgress = (
           strokeWidth={thickness}
           style={{
             strokeDasharray,
-            strokeDashoffset: variant === 'indeterminate' ? '96px' : strokeDashoffset
+            strokeDashoffset: variant === 'indeterminate'
+              ? '96px'
+              : strokeDashoffset
           }}
         />
       </svg>

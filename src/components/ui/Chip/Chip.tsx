@@ -53,17 +53,17 @@ export type ChipProps = {
 
 const Chip = forwardRef<HTMLDivElement, ChipProps>(
   ({
-     className,
-     color = 'default',
-     deleteIcon,
-     disabled,
-     round,
-     variant = 'contained',
-     children,
-     onDelete,
-     onClick,
-     ...props
-   }, ref) => {
+    className,
+    color = 'default',
+    deleteIcon,
+    disabled,
+    round,
+    variant = 'contained',
+    children,
+    onDelete,
+    onClick,
+    ...props
+  }, ref) => {
 
     const classNames = clsx(styles.root, className, color && [styles[color]], round && [styles.round], {
       [styles.disabled]: disabled,

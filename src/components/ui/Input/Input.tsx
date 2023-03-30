@@ -3,13 +3,11 @@ import { ComponentPropsWithoutRef, forwardRef, ReactNode } from 'react';
 
 import styles from './Input.module.sass';
 
-export type InputVariant = 'contained' | 'outlined' | 'underline';
-
 export type InputProps = {
   className?: string;
   hasError?: boolean;
   loading?: boolean;
-  variant?: InputVariant;
+  variant?: 'contained' | 'outlined' | 'underline';
   controlClassName?: string;
   endAdornment?: ReactNode;
   startAdornment?: ReactNode;
