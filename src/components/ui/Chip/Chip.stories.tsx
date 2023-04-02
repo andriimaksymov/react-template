@@ -51,15 +51,15 @@ Clickable.args = {
   onClick: () => alert('Message'),
 };
 
-export const WithDeleteButton = Template.bind({});
-WithDeleteButton.args = {
+export const DeleteButton = Template.bind({});
+DeleteButton.args = {
   children: 'With Delete Button',
   onClick: () => alert('Click'),
   onDelete: () => alert('Delete'),
 };
 
-export const WithCustomDeleteIcon = Template.bind({});
-WithCustomDeleteIcon.args = {
+export const CustomDeleteIcon = Template.bind({});
+CustomDeleteIcon.args = {
   children: 'With Delete Button',
   deleteIcon: DeleteIcon,
   onClick: () => alert('Click'),

@@ -1,36 +1,57 @@
-import { Meta, Story } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
-import IconButton, { IconButtonColor, IconButtonSize } from './IconButton';
+import IconButton from './IconButton';
 import { ReactComponent as PlusIcon } from '../../../assets/icons/plus.svg';
+import Button from '../Button';
+import Stack from '../Stack';
 
 export default {
   title: 'Components/UI/IconButton',
   component: IconButton
 } as Meta<typeof IconButton>
 
-const Template: Story<typeof IconButton> = (args) => <IconButton icon={PlusIcon} {...args} />
-
-function createStory(
-  size: IconButtonSize,
-  color: IconButtonColor,
-  round?: boolean,
-  disabled?: boolean,
-) {
-  const story = Template.bind({});
-  story.args = {
-    size,
-    color,
-    round,
-    disabled,
-  };
-  return story;
+export const Basic = (args: typeof Button) => {
+  return (
+    <Stack spacing={3} justify="center">
+      <IconButton icon={PlusIcon} {...args} />
+    </Stack>
+  )
 }
 
-export const ColorDefault = createStory('medium', 'default');
-export const ColorPrimary = createStory('medium', 'primary');
-export const ColorSecondary = createStory('medium', 'secondary');
-export const ColorInherit = createStory('medium', 'inherit');
+export const Color = (args: typeof IconButton) => {
+  return (
+    <Stack spacing={3} justify="center">
+      <IconButton color="default" icon={PlusIcon} {...args} />
+      <IconButton color="primary" icon={PlusIcon} {...args} />
+      <IconButton color="secondary" icon={PlusIcon} {...args} />
+    </Stack>
+  )
+}
 
-export const Rounded = createStory('medium', 'inherit', true);
+export const Size = (args: typeof IconButton) => {
+  return (
+    <Stack spacing={3} justify="center" align="center">
+      <IconButton size="small" color="primary" icon={PlusIcon} {...args} />
+      <IconButton size="medium" color="primary" icon={PlusIcon} {...args} />
+      <IconButton size="large" color="primary" icon={PlusIcon} {...args} />
+    </Stack>
+  )
+}
 
-export const Disabled = createStory('medium', 'inherit', false, true);
+export const Rounded = (args: typeof IconButton) => {
+  return (
+    <Stack spacing={3} justify="center" align="center">
+      <IconButton round color="primary" icon={PlusIcon} {...args} />
+    </Stack>
+  )
+}
+
+export const Disabled = (args: typeof IconButton) => {
+  return (
+    <Stack spacing={3} justify="center" align="center">
+      <IconButton disabled color="default" icon={PlusIcon} {...args} />
+      <IconButton disabled color="primary" icon={PlusIcon} {...args} />
+      <IconButton disabled color="secondary" icon={PlusIcon} {...args} />
+    </Stack>
+  )
+}

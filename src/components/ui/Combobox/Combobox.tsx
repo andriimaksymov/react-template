@@ -2,57 +2,88 @@ import clsx from 'clsx';
 import { useCombobox } from 'downshift';
 import React from 'react';
 
+import IconButton from '../IconButton';
 import Input, { InputProps } from '../Input';
+
+import { ReactComponent as ChevronDownIcon } from './assets/chevron-down.svg';
 
 import styles from './Combobox.module.sass';
 
 export type ComboboxItem = {
-  value: string;
+  /**
+   * Combobox item value.
+   */
+  value: string | number;
+  /**
+   * Combobox item key.
+   */
   key?: string | number;
 };
 
 export type ComboboxProps = {
-  items: Array<ComboboxItem>;
+  /**
+   * Shadow depth, corresponds to `dp` in the spec.
+   * It accepts values between 0 and 4 inclusive.
+   * @default 1
+   */
+  elevation?: 0 | 1 | 2 | 3 | 4;
+  /**
+   * The array of items.
+   */
+  items?: Array<ComboboxItem>;
+  /**
+   * The number of items that will be shown.
+   */
   maxItems?: number;
+  /**
+   * The value of the combobox.
+   */
   value?: string;
-  allowCustomValueSelection?: boolean;
-  onChange: (value: string) => void;
+  /**
+   * Callback fired when the input value changes.
+   * @param value: The new value of the text input.
+   */
+  onInputChange?: (value: string) => void;
+  /**
+   * Callback fired when the value changes.
+   * @param value The new value of the component.
+   */
   onSelect?: (value: ComboboxItem | null | undefined) => void;
 } & Omit<InputProps, 'value' | 'onChange' | 'onSelect'>;
 
 function Combobox(
   {
-    items,
+    elevation = 1,
+    items = [],
     maxItems = 5,
     value,
-    allowCustomValueSelection,
 
-    onChange,
+    onInputChange,
     onSelect,
 
     ...inputProps
   }: ComboboxProps) {
   const limitedItems = items.slice(0, maxItems);
 
-  const { isOpen, highlightedIndex, getInputProps, getItemProps, getMenuProps, selectItem, setInputValue } =
+  const { isOpen, highlightedIndex, getInputProps, getItemProps, getMenuProps, selectItem, setInputValue, openMenu } =
     useCombobox({
       items: limitedItems,
       inputValue: value,
       itemToString: (item) => {
-        return item?.value ?? '';
+        return item?.value.toString() ?? '';
       },
       onInputValueChange: (changes) => {
-        onChange(changes.inputValue ?? '');
+        onInputChange?.(changes.inputValue ?? '');
       },
       onSelectedItemChange: (changes) => {
         onSelect?.(changes.selectedItem);
       }
     });
 
-  const onInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     inputProps.onKeyDown?.(event);
 
-    if (allowCustomValueSelection && event.key === 'Enter') {
+    if (event.key === 'Enter') {
       selectItem({
         value: event.currentTarget.value
       });
@@ -63,13 +94,21 @@ function Combobox(
   return (
     <div className={styles.root}>
       <Input
+        endAdornment={
+          <IconButton
+            className={styles.chevronIconButton}
+            icon={ChevronDownIcon}
+            onClick={openMenu}
+          />
+        }
         {...getInputProps({
           ...inputProps,
-          onKeyDown: onInputKeyDown
+          onKeyDown: handleInputKeyDown
         })}
       />
       <div
         className={clsx(styles.suggestionMenu, {
+          [styles[`elevation${elevation}`]]: elevation && elevation > 0,
           [styles.openSuggestionMenu]: isOpen && items.length > 0
         })}
         {...getMenuProps()}

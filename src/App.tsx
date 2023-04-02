@@ -1,12 +1,11 @@
 import React from 'react';
-import { Routes, Route, Outlet, Link } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 
 import './global.sass';
 
 import Home from './pages/Home';
 import Stack from './components/ui/Stack';
 import Combobox from './components/ui/Combobox';
-import Button from './components/ui/Button';
 
 function App() {
   return (
@@ -21,17 +20,18 @@ function App() {
 function Layout() {
   return (
     <div>
-      <Stack align="center"  spacing={4}>
-        <Button component={Link} to="/">
-          123
-        </Button>
+      <Stack align="center" spacing={4}>
         <Combobox
+          elevation={1}
           items={[
             { key: 1, value: '10' },
             { key: 2, value: '20' },
             { key: 3, value: '30' },
+            { key: 4, value: '30' },
+            { key: 5, value: '30' },
+            { key: 6, value: '30' },
+            { key: 7, value: '30' },
           ]}
-          onChange={(e) => console.log(e)}
         />
       </Stack>
       <Outlet />
