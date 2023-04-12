@@ -49,7 +49,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setChecked(e.target.checked);
+    setChecked(!checked);
     props.onChange?.(e);
   };
 

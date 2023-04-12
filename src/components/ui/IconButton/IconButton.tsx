@@ -1,13 +1,9 @@
-import { ComponentPropsWithRef, ElementType, forwardRef } from 'react';
 import clsx from 'clsx';
+import { ComponentPropsWithRef, ElementType, forwardRef } from 'react';
 
 import { PolymorphicRef } from '../../../types/utils';
 
 import styles from './IconButton.module.sass';
-
-export type IconButtonSize = 'small' | 'medium' | 'large';
-
-export type IconButtonColor = 'default' | 'inherit' | 'primary' | 'secondary';
 
 export type IconButtonProps<T extends ElementType> = {
   /**
@@ -16,9 +12,9 @@ export type IconButtonProps<T extends ElementType> = {
   component?: T,
   /**
    * The color of the component.
-   * @default 'default'
+   * @default 'inherit'
    */
-  color?: IconButtonColor;
+  color?: 'inherit' | 'primary' | 'secondary';
   /**
    * Override or extend the style applied to the component.
    */
@@ -45,7 +41,7 @@ export type IconButtonProps<T extends ElementType> = {
    * The size of the component.
    * @default 'medium'
    */
-  size?: IconButtonSize;
+  size?: 'small' | 'medium' | 'large';
 }
 
 const IconButtonBase = <T extends ElementType = 'button'>(

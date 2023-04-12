@@ -3,6 +3,10 @@ import { ComponentMeta } from '@storybook/react';
 import Input, { InputProps } from './Input';
 import Stack from '../Stack';
 
+import { ReactComponent as PlusIcon } from '../../../assets/icons/plus.svg';
+import SvgIcon from '../SvgIcon';
+import IconButton from '../IconButton';
+
 export default {
   title: 'Components/UI/Input',
   component: Input,
@@ -29,5 +33,13 @@ export const Disabled = (args: InputProps) => (
     <Input disabled variant="outlined" placeholder="Outlined" {...args} />
     <Input disabled variant="contained" placeholder="Contained" {...args} />
     <Input disabled variant="underline" placeholder="Underline" {...args} />
+  </Stack>
+);
+
+export const Adornments = (args: InputProps) => (
+  <Stack spacing={3} justify="center" align="center">
+    <Input startAdornment={<SvgIcon icon={PlusIcon} fontSize="small" />} variant="outlined" placeholder="Outlined" {...args} />
+    <Input startAdornment="Kg" variant="outlined" placeholder="Outlined" {...args} />
+    <Input endAdornment={<IconButton icon={PlusIcon} />} variant="outlined" placeholder="Outlined" {...args} />
   </Stack>
 );

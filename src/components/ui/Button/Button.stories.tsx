@@ -20,7 +20,7 @@ export default {
     },
     color: {
       control: 'select',
-      options: ['default', 'primary', 'secondary'] as ButtonProps<typeof Button>['color'][],
+      options: ['inherit', 'primary', 'secondary'] as ButtonProps<typeof Button>['color'][],
     },
     fullWidth: {
       control: 'boolean',
@@ -30,47 +30,123 @@ export default {
       control: 'boolean',
     }
   },
-  parameters: {
-
-  }
+  parameters: {}
 } as Meta<typeof Button>;
 
 export const Basic = (args: typeof Button) => {
   return (
     <Stack spacing={3} justify="center">
-      <Button variant="text" color="primary" {...args}>
+      <Button variant="text" {...args}>
         Text
       </Button>
-      <Button variant="contained" color="primary" {...args}>
+      <Button variant="contained" {...args}>
         Contained
       </Button>
-      <Button variant="outlined" color="primary" {...args}>
+      <Button variant="outlined" {...args}>
         Outlined
       </Button>
     </Stack>
-  )
-}
+  );
+};
+
+export const Text = (args: typeof Button) => {
+  return (
+    <BrowserRouter>
+      <Stack spacing={3} align="center" justify="center">
+        <Button variant="text" {...args}>
+          Basic
+        </Button>
+        <Button variant="text" disabled {...args}>
+          Disabled
+        </Button>
+        <Button variant="text" component={Link} to="/" {...args}>
+          Link
+        </Button>
+      </Stack>
+    </BrowserRouter>
+  );
+};
+
+export const Contained = (args: typeof Button) => {
+  return (
+    <BrowserRouter>
+      <Stack spacing={3} align="center" justify="center">
+        <Button variant="contained" {...args}>
+          Basic
+        </Button>
+        <Button variant="contained" disabled {...args}>
+          Disabled
+        </Button>
+        <Button variant="contained" component={Link} to="/" {...args}>
+          Link
+        </Button>
+      </Stack>
+    </BrowserRouter>
+  );
+};
+
+export const Outlined = (args: typeof Button) => {
+  return (
+    <BrowserRouter>
+      <Stack spacing={3} align="center" justify="center">
+        <Button variant="outlined" {...args}>
+          Basic
+        </Button>
+        <Button variant="outlined" disabled {...args}>
+          Disabled
+        </Button>
+        <Button variant="outlined" component={Link} to="/" {...args}>
+          Link
+        </Button>
+      </Stack>
+    </BrowserRouter>
+  );
+};
 
 export const Size = (args: typeof Button) => {
   return (
-    <Stack spacing={3} align="center" justify="center">
-      <Button variant="contained" color="primary" size="small" {...args}>
-        Small
-      </Button>
-      <Button variant="contained" color="primary" size="medium" {...args}>
-        Medium
-      </Button>
-      <Button variant="contained" color="primary" size="large" {...args}>
-        Large
-      </Button>
+    <Stack spacing={3} direction="column" justify="center">
+      <Stack spacing={3} align="center" justify="center">
+        <Button variant="text" size="small" {...args}>
+          Small
+        </Button>
+        <Button variant="text" size="medium" {...args}>
+          Medium
+        </Button>
+        <Button variant="text" size="large" {...args}>
+          Large
+        </Button>
+      </Stack>
+      <Stack spacing={3} align="center" justify="center">
+        <Button variant="contained" size="small" {...args}>
+          Small
+        </Button>
+        <Button variant="contained" size="medium" {...args}>
+          Medium
+        </Button>
+        <Button variant="contained" size="large" {...args}>
+          Large
+        </Button>
+      </Stack>
+      <Stack spacing={3} align="center" justify="center">
+        <Button variant="outlined" size="small" {...args}>
+          Small
+        </Button>
+        <Button variant="outlined" size="medium" {...args}>
+          Medium
+        </Button>
+        <Button variant="outlined" size="large" {...args}>
+          Large
+        </Button>
+      </Stack>
     </Stack>
-  )
-}
+  );
+};
 
 export const Color = (args: typeof Button) => {
   return (
     <Stack spacing={3} justify="center">
-      <Button variant="contained" color="default" {...args}>
+      <Button variant="contained" color="inherit" {...args}>
         Default
       </Button>
       <Button variant="contained" color="primary" {...args}>
@@ -80,43 +156,8 @@ export const Color = (args: typeof Button) => {
         Secondary
       </Button>
     </Stack>
-  )
-}
-
-export const Links = (args: typeof Button) => {
-  return (
-    <BrowserRouter>
-      <Stack spacing={3} justify="center">
-        <Button component={Link} to="/" variant="text" color="default" {...args}>
-          Default Button
-        </Button>
-        <Button component={Link} to="/" variant="contained" color="primary" {...args}>
-          Primary Button
-        </Button>
-        <Button component={Link} to="/" variant="outlined" color="secondary" {...args}>
-          Secondary Button
-        </Button>
-      </Stack>
-    </BrowserRouter>
-  )
-}
-
-export const Disabled = (args: typeof Button) => {
-  return (
-    <Stack spacing={3} justify="center">
-      <Button variant="text" color="default" disabled {...args}>
-        Default Button
-      </Button>
-      <Button variant="contained" color="primary" disabled {...args}>
-        Primary Button
-      </Button>
-      <Button variant="outlined" color="secondary" disabled {...args}>
-        Secondary Button
-      </Button>
-    </Stack>
-  )
-}
-
+  );
+};
 
 export const IconStart = (args: typeof Button) => {
   return (
@@ -131,8 +172,8 @@ export const IconStart = (args: typeof Button) => {
         Outlined
       </Button>
     </Stack>
-  )
-}
+  );
+};
 
 export const IconEnd = (args: typeof Button) => {
   return (
@@ -147,8 +188,8 @@ export const IconEnd = (args: typeof Button) => {
         Outlined
       </Button>
     </Stack>
-  )
-}
+  );
+};
 
 export const FullWidth = (args: typeof Button) => {
   return (
@@ -163,5 +204,5 @@ export const FullWidth = (args: typeof Button) => {
         Outlined
       </Button>
     </Stack>
-  )
-}
+  );
+};

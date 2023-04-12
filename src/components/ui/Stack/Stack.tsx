@@ -53,7 +53,14 @@ const Stack: FC<StackProps> = (
   });
 
   return (
-    <div className={className} style={defaultStyle} {...props}>
+    <div
+      className={className}
+      {...props}
+      style={{
+        ...defaultStyle,
+        ...props.style
+      }}
+    >
       {children}
     </div>
   );

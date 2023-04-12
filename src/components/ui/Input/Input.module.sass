@@ -17,7 +17,7 @@
   font-weight: 400
   line-height: 1.5
   letter-spacing: inherit
-  padding: 8px 18px
+  padding: 0.5rem 1.125rem
   color: #1A2027
   background: 0 0
   border: none
@@ -29,7 +29,21 @@
 
 .adornment
   display: flex
-  margin: 8px
+  align-items: center
+  white-space: nowrap
+  max-height: 2em
+
+.startAdornment
+  padding-left: 1rem
+
+  .control
+    padding-left: 0.5rem
+
+.endAdornment
+  padding-right: 1rem
+
+  .control
+    padding-right: 0.5rem
 
 .hasError
   .control
@@ -44,13 +58,13 @@
 
 .outlined
   background-color: transparent
-  border-color: #f0f0f0
+  border-color: rgba(0, 0, 0, 0.42)
 
   &.hasError
     border-color: var(--color-error-main, red)
 
 .underline
-  border-bottom: 1px solid #f0f0f0
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42)
   border-radius: 0
 
   &.hasError

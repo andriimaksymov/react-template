@@ -28,11 +28,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>((
 ) => {
   return (
     <div
-      className={clsx(styles.root, className, {
-        [styles.disabled]: disabled,
-        [styles.hasError]: hasError,
-        [styles[variant]]: !!variant
-      })}
+      className={clsx(styles.root,
+        {
+          [styles.startAdornment]: startAdornment,
+          [styles.endAdornment]: endAdornment,
+          [styles.disabled]: disabled,
+          [styles.hasError]: hasError,
+          [styles[variant]]: !!variant
+        },
+        className,
+      )}
     >
       {startAdornment && (
         <div className={styles.adornment}>

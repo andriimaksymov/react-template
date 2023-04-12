@@ -37,7 +37,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((
     borderColor,
     className,
     children,
-    elevation= 1,
+    elevation = 1,
     ...props
   }, ref) => {
   const classNames = clsx(styles.root, className, elevation && [styles[`elevation${elevation}`]], {

@@ -1,11 +1,13 @@
-import React from 'react';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import React, { MouseEvent, useState } from 'react';
+import { Outlet, Route, Routes } from 'react-router-dom';
 
 import './global.sass';
 
 import Home from './pages/Home';
 import Stack from './components/ui/Stack';
-import Combobox from './components/ui/Combobox';
+import Button from './components/ui/Button';
+import Menu from './components/ui/Menu';
+import MenuItem from './components/ui/MenuItem';
 
 function App() {
   return (
@@ -18,21 +20,53 @@ function App() {
 }
 
 function Layout() {
+  const [anchorEl, setAnchorEl] = useState<Element | undefined>(undefined);
+  const isOpen = Boolean(anchorEl);
+
+  const handleMenuOpen = (e: MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(undefined);
+  };
+
   return (
     <div>
-      <Stack align="center" spacing={4}>
-        <Combobox
-          elevation={1}
-          items={[
-            { key: 1, value: '10' },
-            { key: 2, value: '20' },
-            { key: 3, value: '30' },
-            { key: 4, value: '30' },
-            { key: 5, value: '30' },
-            { key: 6, value: '30' },
-            { key: 7, value: '30' },
-          ]}
-        />
+      <Stack justify="center" style={{
+        padding: '10rem'
+      }}
+      >
+        <Button onClick={handleMenuOpen}>
+          Elevation 1
+        </Button>
+        <Menu
+          anchorEl={anchorEl}
+          isOpen={isOpen}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'left'
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left'
+          }}
+          anchorPosition={{
+            top: 10,
+            left: 10
+          }}
+          onClose={handleMenuClose}
+        >
+          <MenuItem onClick={handleMenuClose}>
+            Profile
+          </MenuItem>
+          <MenuItem onClick={handleMenuClose}>
+            Account
+          </MenuItem>
+          <MenuItem onClick={handleMenuClose}>
+            Logout
+          </MenuItem>
+        </Menu>
       </Stack>
       <Outlet />
     </div>

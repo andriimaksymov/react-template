@@ -4,11 +4,11 @@ import { ChangeEvent, useState } from 'react';
 import Badge, { BadgeOrigin, BadgeProps } from './Badge';
 import Radio from '../Radio';
 import Stack from '../Stack';
+import SvgIcon from '../SvgIcon';
 import Switch from '../Switch';
 import Typography from '../Typography';
 
 import { ReactComponent as MailIcon } from '../../../assets/icons/mail.svg';
-import SvgIcon from '../SvgIcon';
 
 export default {
   title: 'Components/UI/Badge',

@@ -16,9 +16,9 @@ export type ButtonProps<T extends ElementType> = {
   className?: string;
   /**
    * The color of the component.
-   * @default 'default'
+   * @default 'inherit'
    */
-  color?: 'default' | 'primary' | 'secondary';
+  color?: 'inherit' | 'primary' | 'secondary';
   /**
    * The component to use.
    */
@@ -58,7 +58,7 @@ const ButtonBase = <T extends ElementType = 'button'>(
     children,
     className,
     component,
-    color = 'default',
+    color = 'primary',
     disabled,
     endIcon: EndIcon,
     size = 'medium',
