@@ -1,26 +1,78 @@
-import React, { MouseEvent, ReactNode, useRef, useState } from 'react';
 import clsx from 'clsx';
+import { MouseEvent, ReactNode, useRef, useState } from 'react';
 
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
 
 import styles from './Tooltip.module.sass';
 
-type TooltipProps = {
-  delay?: number;
-  width?: number | 'auto';
+export type TooltipProps = {
   action?: 'hover' | 'click';
-  direction?: 'bottom-end';
+  /**
+   * If true, adds an arrow to the tooltip.
+   * default 'false'
+   */
+  arrow?: boolean;
+  /**
+   * Tooltip reference element.
+   */
   children?: ReactNode;
+  /**
+   * Override or extend the style applied to the component.
+   */
+  className?: string;
+  /**
+   * Tooltip content. Zero-length content string, undefined, null and false are never displayed.
+   */
   content?: ReactNode;
+  /**
+   * The number of milliseconds to wait before showing the tooltip.
+   * default 0
+   */
+  delay?: number;
+  /**
+   * If true, the component is shown.
+   * default 'false'
+   */
+  open?: boolean;
+  /**
+   * Tooltip placement.
+   * default 'bottom'
+   */
+  placement?: 'bottom-end'
+    | 'bottom-start'
+    | 'bottom'
+    | 'left-end'
+    | 'left-start'
+    | 'left'
+    | 'right-end'
+    | 'right-start'
+    | 'right'
+    | 'top-end'
+    | 'top-start'
+    | 'top';
+  /**
+   * Theme style of the tooltip.
+   * default 'dark'
+   */
+  theme?: 'dark' | 'light';
+  /**
+   * The width of tooltip.
+   * default 'auto'
+   */
+  width?: number | 'auto';
 };
 
 const Tooltip = ({
-  width = 'auto',
-  action = 'click',
-  direction = 'bottom-end',
-  delay,
+  action = 'hover',
+  arrow,
+  content,
+  className,
   children,
-  content
+  delay = 0,
+  open,
+  placement = 'bottom',
+  theme = 'dark',
+  width = 'auto',
 }: TooltipProps) => {
   const [active, setActive] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -28,7 +80,7 @@ const Tooltip = ({
   const timeout = () => {
     setTimeout(() => {
       setActive(true);
-    }, delay || 400);
+    }, delay ?? 400);
   };
 
   const showTip = (e: MouseEvent<HTMLElement>) => {
@@ -45,6 +97,7 @@ const Tooltip = ({
   return (
     <div
       ref={ref}
+      role="tooltip"
       className={styles.wrapper}
       {...(action === 'hover'
         ? {
@@ -56,9 +109,15 @@ const Tooltip = ({
         })}
     >
       {children}
-      {content && active && (
-        <div style={{ width }} className={clsx(styles.root, styles[direction])}>
+      {content && (active || open) && (
+        <div
+          style={{ width }}
+          className={clsx(styles.root, styles[placement], styles[theme], className)}
+        >
           {content}
+          {arrow && (
+            <span className={styles.arrow} />
+          )}
         </div>
       )}
     </div>

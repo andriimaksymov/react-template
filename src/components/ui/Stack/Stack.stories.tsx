@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import Stack, { StackDirection, StackSpacing } from './Stack';
+import Stack, { StackProps } from './Stack';
 
 export default {
   title: 'Components/UI/Stack',
@@ -32,9 +32,9 @@ const Template: ComponentStory<typeof Stack> = (args) => (
 );
 
 function createStory(
-  direction: StackDirection,
-  spacing?: StackSpacing,
-  wrap?: boolean,
+  direction: StackProps['direction'],
+  spacing?: StackProps['spacing'],
+  wrap?: StackProps['wrap'],
   childrenCount = 5,
 ) {
   const story = Template.bind({});
@@ -58,5 +58,5 @@ export const HorizontalReverse = createStory('row-reverse', 2);
 export const Vertical = createStory('column', 2);
 export const VerticalReverse = createStory('column-reverse', 2);
 
-export const StackWithoutWrap = createStory('row', 2, false, 30);
-export const StackWithWrap = createStory('row', 2, true, 30);
+export const StackWithWrap = createStory('row', 2, 'wrap', 30);
+export const StackWithWrapReverse = createStory('row', 2, 'wrap-reverse', 30);
