@@ -10,9 +10,15 @@ export type TypographyVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1
 export type TypographyWeight = 'normal' | 'medium' | 'semiBold' | 'bold';
 
 export type TypographyProps<T extends ElementType> = {
-  component?: T,
+  /**
+   * The content of the component.
+   */
   children?: ReactNode,
   className?: string,
+  /**
+   * The component to use.
+   */
+  component?: T,
   variant?: TypographyVariant,
   weight?: TypographyWeight,
 }

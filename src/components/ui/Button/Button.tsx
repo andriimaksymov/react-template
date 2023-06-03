@@ -58,7 +58,7 @@ const ButtonBase = <T extends ElementType = 'button'>(
     children,
     className,
     component,
-    color = 'primary',
+    color = 'inherit',
     disabled,
     endIcon: EndIcon,
     size = 'medium',

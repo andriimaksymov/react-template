@@ -145,6 +145,7 @@ export const Basic = (args: typeof Combobox) => (
   <Stack justify="center">
     <Combobox
       {...args}
+      placeholder="Select"
     />
   </Stack>
 );
@@ -162,6 +163,7 @@ export const SearchInput = (args: typeof Combobox) => {
         {...args}
         onInputChange={handleChangeValue}
         items={comboboxItems}
+        placeholder="Select"
       />
     </Stack>
   )
