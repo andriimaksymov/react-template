@@ -6,6 +6,10 @@ import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import styles from './Tooltip.module.sass';
 
 export type TooltipProps = {
+  /**
+   * Action that triggers the tooltip. Can be 'hover' or 'click'.
+   * @default 'hover'
+   */
   action?: 'hover' | 'click';
   /**
    * If true, adds an arrow to the tooltip.
@@ -62,6 +66,12 @@ export type TooltipProps = {
   width?: number | 'auto';
 };
 
+/**
+ * A component that displays a tooltip when triggered by user action.
+ * @param {TooltipProps} props - The props for the Tooltip component.
+ * @returns {JSX.Element} - The rendered Tooltip component.
+ */
+
 const Tooltip = ({
   action = 'hover',
   arrow,
@@ -73,10 +83,13 @@ const Tooltip = ({
   placement = 'bottom',
   theme = 'dark',
   width = 'auto',
-}: TooltipProps) => {
+}: TooltipProps): JSX.Element => {
   const [active, setActive] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
 
+  /**
+   * Sets a timeout before showing the tooltip.
+   */
   const timeout = () => {
     setTimeout(() => {
       setActive(true);

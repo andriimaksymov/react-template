@@ -51,6 +51,13 @@ export type ChipProps = {
   variant?: 'outlined' | 'contained';
 }
 
+/**
+ * Chip component for displaying tags or small interactive elements.
+ * @param {ChipProps} props The props for the Chip component.
+ * @param {React.Ref<HTMLDivElement>} ref The ref for the Chip.
+ * @returns {JSX.Element} The Chip component.
+ */
+
 const Chip = forwardRef<HTMLDivElement, ChipProps>(
   ({
     className,
@@ -65,11 +72,17 @@ const Chip = forwardRef<HTMLDivElement, ChipProps>(
     ...props
   }, ref) => {
 
-    const classNames = clsx(styles.root, className, color && [styles[color]], round && [styles.round], {
-      [styles.disabled]: disabled,
-      [styles[variant]]: variant,
-      [styles.clickable]: onClick
-    });
+    const classNames = clsx(
+      styles.root,
+      className,
+      color && styles[color],
+      round && styles.round,
+      {
+        [styles.disabled]: disabled,
+        [styles[variant]]: variant,
+        [styles.clickable]: onClick
+      }
+    );
 
     const handleDelete = (e: UIEvent<HTMLSpanElement>) => {
       e.stopPropagation();

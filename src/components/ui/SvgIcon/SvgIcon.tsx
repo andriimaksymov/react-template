@@ -24,23 +24,30 @@ export type SvgIconProps = {
   icon: ElementType,
 }
 
+/**
+ * SvgIcon component for displaying SVG icons with customizable color and size.
+ * @param {SvgIconProps} props - The props for the SvgIcon component.
+ * @returns {JSX.Element} - The rendered SvgIcon component.
+ */
+
 const SvgIcon = (
   {
     className,
     color = 'inherit',
     fontSize = 'medium',
-    icon: Icon, ...props
+    icon: Icon,
+    ...rest
   }: SvgIconProps) => {
 
   const classNames = clsx(
     styles.root,
+    className,
     styles[`${fontSize}FontSize`],
     styles[`${color}Color`],
-    className
   );
 
   return (
-    <Icon className={classNames} {...props} />
+    <Icon className={classNames} {...rest} />
   );
 };
 

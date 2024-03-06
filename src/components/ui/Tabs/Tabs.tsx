@@ -1,39 +1,70 @@
 import clsx from 'clsx';
-import { ReactElement, useEffect, useRef, useState } from 'react';
+import { ReactElement, ReactNode, useEffect, useRef, useState } from 'react';
 
 import styles from './Tabs.module.sass';
 
 export type TabsTab = {
+  /**
+   * The label of the tab.
+   */
   label: string | ReactElement;
+  /**
+   * The index of the tab.
+   */
   index: number;
-  element?: ReactElement;
+  /**
+   * The content to be displayed when this tab is selected.
+   */
+  content: ReactNode;
 };
 
 export type TabsProps = {
+  /**
+   * Additional class name for the root element.
+   */
   className?: string;
+  /**
+   * Array of tabs to be rendered.
+   */
   tabs: TabsTab[];
+  /**
+   * The index of the currently selected tab.
+   */
   selectedTab: number;
-  onClick: (index: number) => void;
+  /**
+   * Callback function to handle tab change.
+   */
+  onChange: (index: number) => void;
+  /**
+   * The orientation of the tabs. Can be 'horizontal' or 'vertical'.
+   * @default 'horizontal'
+   */
   orientation?: 'horizontal' | 'vertical';
+  /**
+   * The variant of the tabs. Can be 'underline' or 'outlined'.
+   * @default 'underline'
+   */
   variant?: 'underline' | 'outlined';
+  /**
+   * Whether to lazy load the tab content. If true, content of inactive tabs will not be rendered until they are selected.
+   * @default false
+   */
+  lazyLoad?: boolean;
 };
 
 /**
- * Available Props
- * @param className string
- * @param tab Array of object
- * @param selectedTab number
- * @param variant Tab variant Underline | Outlined
- * @param orientation Tab orientation Vertical | Horizontal
- * @param onClick Function to set the active tab
+ * A component to display tabs with associated content.
+ * @param {TabsProps} props - The props for the Tabs component.
+ * @returns {JSX.Element} - The rendered Tabs component.
  */
+
 const Tabs = ({
   className = '',
   tabs = [],
   selectedTab = 0,
   variant = 'underline',
   orientation = 'horizontal',
-  onClick
+  onChange
 }: TabsProps) => {
   const Panel = tabs && tabs.find((tab) => tab.index === selectedTab);
 
@@ -42,8 +73,8 @@ const Tabs = ({
 
   const tabsRef = useRef<HTMLDivElement[]>([]);
 
-  const handleClick = (index: number) => {
-    onClick(index);
+  const handleChange = (index: number) => {
+    onChange(index);
   };
 
   useEffect(() => {
@@ -71,7 +102,7 @@ const Tabs = ({
             className={clsx(styles.tab, {
               [styles.active]: selectedTab === tab.index
             })}
-            onClick={() => handleClick(tab.index)}
+            onClick={() => handleChange(tab.index)}
             key={tab.index}
             role="tab"
             ref={(el) => (tabsRef.current[tab.index] = el as HTMLDivElement)}
@@ -90,7 +121,7 @@ const Tabs = ({
         id={`tabpanel-${selectedTab}`}
         role="tabpanel"
       >
-        {Panel?.element}
+        {Panel?.content}
       </div>
     </div>
   );

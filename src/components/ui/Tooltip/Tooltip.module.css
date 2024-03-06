@@ -1,0 +1,119 @@
+.wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.root {
+  position: absolute;
+  max-width: 300px;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin: 2px;
+  z-index: 100;
+}
+
+.dark {
+  color: #ffffff;
+  background-color: rgba(97, 97, 97, 0.9);
+}
+
+.arrow {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  overflow: hidden;
+}
+
+.bottom, .bottom-start, .bottom-end {
+  top: 100%;
+  margin-top: 14px;
+}
+
+.bottom .arrow, .bottom-start .arrow, .bottom-end .arrow {
+  bottom: 100%;
+  border-left: 0.375rem solid transparent;
+  border-right: 0.375rem solid transparent;
+  border-bottom: 0.375rem solid rgba(97, 97, 97, 0.9);
+}
+
+.bottom, .top {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom .arrow, .top .arrow {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom-start, .top-start {
+  left: 0;
+}
+
+.bottom-start .arrow, .top-start .arrow {
+  left: 0.5rem
+}
+
+
+.bottom-end, .top-end {
+  right: 0;
+}
+
+.bottom-end .arrow, .top-end .arrow {
+  right: 0.5rem
+}
+
+.top, .top-start, .top-end {
+  bottom: 100%;
+  margin-bottom: 14px
+}
+
+.top .arrow, .top-start .arrow, .top-end .arrow {
+  top: 100%;
+  border-left: 0.375rem solid transparent;
+  border-right: 0.375rem solid transparent;
+  border-top: 0.375rem solid rgba(97, 97, 97, 0.9) ;
+}
+
+.left, .left-start, .left-end {
+  right: 100%;
+  margin-right: 14px;
+}
+
+.left .arrow, .left-start .arrow, .left-end .arrow {
+  left: 100%;
+  border-bottom: 0.375rem solid transparent;
+  border-top: 0.375rem solid transparent;
+  border-left: 0.375rem solid rgba(97, 97, 97, 0.9);
+}
+
+.left, .right {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left .arrow, .right .arrow {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left-start, .right-start {
+  bottom: 0
+}
+
+.left-end, .right-end {
+  top: 0
+}
+
+.right, .right-start, .right-end {
+  left: 100%;
+  margin-left: 14px
+}
+
+.right .arrow, .right-start .arrow, .right-end .arrow {
+  right: 100%;
+  border-bottom: 0.375rem solid transparent;
+  border-top: 0.375rem solid transparent;
+  border-right: 0.375rem solid rgba(97, 97, 97, 0.9);
+}

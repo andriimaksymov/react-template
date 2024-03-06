@@ -37,6 +37,12 @@ export type ProgressProps = {
   striped?: boolean;
 };
 
+/**
+ * Progress component to display progress bars.
+ * @param {ProgressProps} props - The props for the Progress component.
+ * @returns {JSX.Element} - The rendered Progress component.
+ */
+
 const Progress = (
   {
     animated,

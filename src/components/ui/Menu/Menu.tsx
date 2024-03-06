@@ -81,6 +81,12 @@ export interface MenuProps {
   onClose?: () => void;
 }
 
+/**
+ * Component for displaying a menu.
+ * @param {MenuProps} props - The props for the Menu component.
+ * @returns {JSX.Element} - The rendered Menu component.
+ */
+
 const Menu = (props: MenuProps) => {
   const {
     anchorEl,

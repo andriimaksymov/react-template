@@ -27,13 +27,20 @@ export type MenuItemProps<T extends ElementType> = {
   isActive?: boolean;
 }
 
+/**
+ * Base MenuItem component.
+ * @param {MenuItemProps<T>} props - The props for the MenuItem component.
+ * @param {React.Ref<HTMLElement>} ref - The ref to attach to the MenuItem component.
+ * @returns {JSX.Element} - The rendered MenuItem component.
+ */
+
 const MenuItemBase = <T extends ElementType = 'div'>(
   {
     children,
     component,
     className,
     isActive,
-    ...props
+    ...rest
   }: MenuItemProps<T> & Omit<ComponentPropsWithRef<T>, keyof ButtonProps<T>>,
   ref: PolymorphicRef<T>
 ) => {
@@ -44,13 +51,13 @@ const MenuItemBase = <T extends ElementType = 'div'>(
     styles.root,
     {
       [styles.active]: isActive,
-      [styles.cursorPointer]: props.onClick,
+      [styles.cursorPointer]: rest.onClick,
     },
     className,
   );
 
   return (
-    <Component ref={ref} className={classNames} {...props}>
+    <Component ref={ref} className={classNames} {...rest}>
       {children}
     </Component>
   );

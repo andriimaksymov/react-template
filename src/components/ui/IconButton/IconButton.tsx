@@ -44,6 +44,14 @@ export type IconButtonProps<T extends ElementType> = {
   size?: 'small' | 'medium' | 'large';
 }
 
+/**
+ * A button with an icon.
+ * @template T The type of element to use as the component.
+ * @param {IconButtonProps<T>} props The props for the IconButton.
+ * @param {PolymorphicRef<T>} ref The ref for the IconButton.
+ * @returns {JSX.Element} The IconButton component.
+ */
+
 const IconButtonBase = <T extends ElementType = 'button'>(
   {
     component,
@@ -54,20 +62,27 @@ const IconButtonBase = <T extends ElementType = 'button'>(
     iconClassName,
     disabled,
     size = 'medium',
-    ...props
+    ...rest
   }: IconButtonProps<T> & Omit<ComponentPropsWithRef<T>, keyof IconButtonProps<T>>,
   ref: PolymorphicRef<T>) => {
   const Component = component || 'button';
 
-  const classNames = clsx(styles.root, className, color && [styles[color]], {
-    [styles.disabled]: disabled,
-    [styles.round]: round,
-  });
+  const classNames = clsx(
+    styles.root,
+    className,
+    color && styles[color],
+    disabled && styles.disabled,
+    round && styles.round,
+  );
 
-  const iconClassNames = clsx(styles.icon, iconClassName, styles[size]);
+  const iconClassNames = clsx(
+    styles.icon,
+    iconClassName,
+    styles[size]
+  );
 
   return (
-    <Component ref={ref} {...props} className={classNames}>
+    <Component ref={ref} {...rest} className={classNames}>
       <Icon className={iconClassNames} />
     </Component>
   );

@@ -19,8 +19,14 @@ export type RadioProps = {
    * The position of the label.
    * @default 'end'
    */
-  labelPlacement?: 'start' | 'end'; // todo extend
+  labelPlacement?: 'start' | 'end';
 } & ComponentPropsWithoutRef<'input'>
+
+/**
+ * Radio component for selecting a single option from a list.
+ * @param {RadioProps} props - The props for the Radio component.
+ * @returns {JSX.Element} - The rendered Radio component.
+ */
 
 const Radio = forwardRef<HTMLInputElement, RadioProps>((
   {

@@ -46,6 +46,13 @@ export type SwitchProps = {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
+/**
+ * Switch component to implement toggle switches.
+ * @param {SwitchProps} props The props for the Chip component.
+ * @param {React.Ref<HTMLDivElement>} ref The ref for the Chip.
+ * @returns {JSX.Element} The Chip component.
+ */
+
 const Switch = forwardRef<HTMLDivElement, SwitchProps>((
   {
     checked,

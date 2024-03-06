@@ -39,14 +39,21 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((
     labelPlacement = 'end',
     ...props
   }, ref) => {
-  const defaultChecked = props.checked ? props.checked : props.defaultChecked ? props.defaultChecked : false;
+  // Initialize checked state based on props
+  const defaultChecked = props.checked ?? props.defaultChecked ?? false;
   const [checked, setChecked] = useState<boolean>(defaultChecked);
-  const classNames = clsx(styles.root, className, props.disabled && [styles.disabled], {
-    [styles.placementStart]: labelPlacement === 'start',
-    [styles.placementTop]: labelPlacement === 'top',
-    [styles.placementBottom]: labelPlacement === 'bottom',
-    [styles.placementEnd]: labelPlacement === 'end',
-  });
+
+  const classNames = clsx(
+    styles.root,
+    className,
+    props.disabled && styles.disabled,
+    {
+      [styles.placementStart]: labelPlacement === 'start',
+      [styles.placementTop]: labelPlacement === 'top',
+      [styles.placementBottom]: labelPlacement === 'bottom',
+      [styles.placementEnd]: labelPlacement === 'end',
+    }
+  );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setChecked(!checked);
@@ -54,12 +61,13 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((
   };
 
   return (
-    <label {...(props.id && { htmlFor: props.id })} className={classNames}>
+    <label htmlFor={props.id} className={classNames}>
       <input
         ref={ref}
         type="checkbox"
         className={styles.input}
         {...props}
+        checked={checked}
         onChange={handleChange}
       />
       {checked ? (

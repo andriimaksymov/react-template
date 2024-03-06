@@ -36,6 +36,12 @@ export type CircularProgressProps = {
   variant?: 'determinate' | 'indeterminate';
 };
 
+/**
+ * CircularProgress component for displaying circular progress indicators.
+ * @param {CircularProgressProps} props The props for the CircularProgress component.
+ * @returns {JSX.Element} The CircularProgress component.
+ */
+
 const CircularProgress = (
   {
     color = 'primary',

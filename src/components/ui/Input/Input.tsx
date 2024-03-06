@@ -32,6 +32,13 @@ export type InputProps = {
   variant?: 'contained' | 'outlined' | 'underline';
 } & ComponentPropsWithoutRef<'input'>;
 
+/**
+ * Input component for receiving user input.
+ * @param {InputProps} props - The props for the Input component.
+ * @param {React.Ref<HTMLInputElement>} ref - The ref to attach to the input element.
+ * @returns {JSX.Element} - The rendered Input component.
+ */
+
 const Input = forwardRef<HTMLInputElement, InputProps>((
   {
     className,

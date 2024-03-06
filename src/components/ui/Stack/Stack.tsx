@@ -35,6 +35,12 @@ export type StackProps = {
   wrap?: 'nowrap' | 'wrap-reverse' | 'wrap';
 } & HTMLAttributes<HTMLDivElement>
 
+/**
+ * Stack component for arranging and spacing its children.
+ * @param {StackProps} props - The props for the Stack component.
+ * @returns {JSX.Element} - The rendered Stack component.
+ */
+
 const Stack = (
   {
     align,
@@ -44,7 +50,7 @@ const Stack = (
     wrap = 'nowrap',
     className,
     children,
-    ...props
+    ...rest
   }: StackProps) => {
 
   const defaultStyle = {
@@ -64,10 +70,10 @@ const Stack = (
   return (
     <div
       className={classNames}
-      {...props}
+      {...rest}
       style={{
         ...defaultStyle,
-        ...props.style
+        ...rest.style
       }}
     >
       {children}

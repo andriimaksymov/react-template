@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import { useCombobox } from 'downshift';
-import React from 'react';
 
 import IconButton from '../IconButton';
 import Input, { InputProps } from '../Input';
@@ -50,6 +49,12 @@ export type ComboboxProps = {
    */
   onSelect?: (value: ComboboxItem | null | undefined) => void;
 } & Omit<InputProps, 'value' | 'onChange' | 'onSelect'>;
+
+/**
+ * Combobox component for selecting items from a dropdown list.
+ * @param {ComboboxProps} props The props for the Combobox component.
+ * @returns {JSX.Element} The Combobox component.
+ */
 
 function Combobox(
   {

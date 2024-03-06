@@ -44,13 +44,15 @@ const Card = forwardRef<HTMLDivElement, CardProps>((
     [styles.withBorder]: hasBorder || borderColor,
   });
 
+  const combinedStyle = {
+    ...(borderColor && { borderColor })
+  };
+
   return (
     <div
       ref={ref}
       className={classNames}
-      style={{
-        ...(borderColor && { borderColor })
-      }}
+      style={combinedStyle}
       {...props}
     >
       {children}

@@ -53,6 +53,14 @@ export type ButtonProps<T extends ElementType> = {
   variant?: 'contained' | 'outlined' | 'text';
 }
 
+/**
+ * Base Button component.
+ * @template T The type of element to use as the component.
+ * @param {ButtonProps<T> & Omit<ComponentPropsWithRef<T>, keyof ButtonProps<T>>} props The props for the Button.
+ * @param {PolymorphicRef<T>} ref The ref for the Button.
+ * @returns {JSX.Element} The Button component.
+ */
+
 const ButtonBase = <T extends ElementType = 'button'>(
   {
     children,
@@ -65,21 +73,25 @@ const ButtonBase = <T extends ElementType = 'button'>(
     startIcon: StartIcon,
     variant = 'contained',
     fullWidth,
-    ...props
+    ...rest
   }: ButtonProps<T> & Omit<ComponentPropsWithRef<T>, keyof ButtonProps<T>>,
   ref: PolymorphicRef<T>) => {
   const Component = component || 'button';
 
-  const classNames = clsx(styles.root, className, {
-    [styles[color]]: color,
-    [styles.disabled]: disabled,
-    [styles.fullWidth]: fullWidth,
-    [styles[size]]: size,
-    [styles[variant]]: variant,
-  });
+  const classNames = clsx(
+    styles.root,
+    className,
+    styles[color],
+    styles[size],
+    styles[variant],
+    {
+      [styles.disabled]: disabled,
+      [styles.fullWidth]: fullWidth,
+    }
+  );
 
   return (
-    <Component ref={ref} className={classNames} disabled={disabled} {...props}>
+    <Component ref={ref} className={classNames} disabled={disabled} {...rest}>
       {StartIcon && (
         <span className={clsx(styles.iconWrap, styles.iconStart)}>
           <StartIcon className={styles.icon} />

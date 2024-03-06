@@ -18,7 +18,7 @@ export type BadgeProps = {
    */
   anchorOrigin?: BadgeOrigin;
   /**
-   * The content rendered within the badge.
+   * The content to be displayed within the badge.
    */
   badgeContent?: ReactNode;
   /**
@@ -46,6 +46,7 @@ export type BadgeProps = {
    */
   variant?: 'dot' | 'standard';
 }
+
 const Badge = (
   {
     anchorOrigin = {
@@ -65,17 +66,20 @@ const Badge = (
     [styles.invisible]: invisible
   });
 
-  const classNamesContent = clsx(styles.content, styles[`${color}Color`], styles[variant], {
-    [styles.anchorOriginTopLeft]: anchorOrigin.horizontal === 'left' && anchorOrigin.vertical === 'top',
-    [styles.anchorOriginTopRight]: anchorOrigin.horizontal === 'right' && anchorOrigin.vertical === 'top',
-    [styles.anchorOriginBottomLeft]: anchorOrigin.horizontal === 'left' && anchorOrigin.vertical === 'bottom',
-    [styles.anchorOriginBottomRight]: anchorOrigin.horizontal === 'right' && anchorOrigin.vertical === 'bottom',
-  });
+  const anchorClassNames = clsx(
+    styles.content,
+    styles[`${color}Color`],
+    styles[variant],
+    {
+      [styles[`anchorOrigin${anchorOrigin.vertical}${anchorOrigin.horizontal}`]]:
+      anchorOrigin.vertical && anchorOrigin.horizontal,
+    }
+  );
 
   return (
     <div className={classNames} {...props}>
       {children}
-      <span className={classNamesContent}>
+      <span className={anchorClassNames}>
         {variant !== 'dot' && badgeContent}
       </span>
     </div>
